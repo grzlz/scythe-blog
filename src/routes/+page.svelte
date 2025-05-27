@@ -23,7 +23,7 @@
 <style>
     .masonry-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
         grid-auto-rows: min-content;
         grid-auto-flow: row dense;
@@ -79,42 +79,25 @@
         filter: brightness(1.15);
     }
     
-    /* Advanced responsive grid adjustments */
-    @media (max-width: 1280px) {
+    /* Mobile-specific adjustments - always 2 columns */
+    @media (max-width: 768px) {
         .masonry-grid {
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
         }
+        
+        /* Adjust zoom behavior for mobile */
         .zoom-2 {
             grid-column: span 2;
         }
-    }
-    
-    @media (max-width: 1024px) {
-        .masonry-grid {
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.25rem;
-        }
-        .zoom-2 {
-            grid-column: span 1;
-        }
+        
         .zoom-3 {
             grid-column: span 2;
         }
     }
     
-    @media (max-width: 768px) {
-        .masonry-grid {
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1rem;
-        }
-        .zoom-1, .zoom-2, .zoom-3 {
-            grid-column: span 1;
-        }
-    }
-    
     @media (max-width: 480px) {
         .masonry-grid {
-            grid-template-columns: 1fr;
+            gap: 0.75rem;
         }
     }
     
