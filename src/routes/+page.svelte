@@ -1,100 +1,67 @@
 <script>
-  let cards = $state([
-    {
-      id: 1,
-      title: "Card 1",
-      content: "This is a short summary for card 1. De todos modos necesito decir que esto es un texto de prueba. Necesito evaluar qiué pasa cuando hay conteido distinto",
-      extra: "This is additional content for card 1. Bla bla bla y entonces por eso bla bla bla. Entonces uwiwi.",
-      image: "https://picsum.photos/id/1015/600/400",
-      zoom: 0
-    },
-    {
-      id: 2,
-      title: "Card 2",
-      content: "This is a short summary for card 2.",
-      extra: "This is additional content for card 2. Bla bla bla y entonces por eso bla bla bla. Entonces uwiwi.",
-      image: "https://picsum.photos/id/1025/600/400",
-      zoom: 0
-    },
-    {
-      id: 3,
-      title: "Card 3",
-      content: "This is a short summary for card 3.",
-      extra: "This is additional content for card 3. Bla bla bla y entonces por eso bla bla bla. Entonces uwiwi.",
-      image: "https://picsum.photos/id/1035/600/400",
-      zoom: 0
-    },
-    {
-      id: 4,
-      title: "Card 4",
-      content: "This is a short summary for card 4.",
-      extra: "This is additional content for card 4. Bla bla bla y entonces por eso bla bla bla. Entonces uwiwi.",
-      image: "https://picsum.photos/id/1045/600/400",
-      zoom: 0
-    }
-  ]);
+  // Sample data for demonstration
+  let items = [
+    { id: 1, title: "Card One", summary: "This is a short summary.", details: "Here is the extended content for card one. It has more details that are revealed on the second click." },
+    { id: 2, title: "Card Two", summary: "Another summary goes here.", details: "Extended details for card two. You can put any content here, including images, lists, etc." },
+    { id: 3, title: "Card Three", summary: "Summary for the third card.", details: "Extended details for card three. This content becomes visible when the card is fully expanded." },
+    // ... add more cards as needed
+  ];
 
-  function cycleZoom(index) {
-    cards[index].zoom = (cards[index].zoom + 1) % 3;
-    if (cards[index].zoom === 2) {
-      setTimeout(() => {
-        document.getElementById(`card-${cards[index].id}`)?.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
-      }, 10);
+  // State for the active (expanded) card and its zoom level
+  let active = { index: null, level: 0 };
+
+  function handleCardClick(i) {
+    if (active.index !== i) {
+      // Open clicked card to level 1
+      active = { index: i, level: 1 };
+    } else {
+      // Same card clicked again
+      if (active.level === 1) {
+        active = { index: i, level: 2 }; // expand further to level 2
+      } else if (active.level === 2) {
+        active = { index: null, level: 0 }; // collapse (optional)
+      }
     }
   }
 </script>
 
-<div class="bg-gray-100 min-h-screen p-8">
-  <h1 class="text-4xl font-bold text-center mb-10">Zoomable Cards in Masonry Layout</h1>
+<!-- Masonry container: 2 columns on medium+, 1 column on small -->
+<div class="columns-2 sm:columns-1 gap-4 md:gap-6">
+  {#each items as item, i (item.id)}
+    <!-- Each card -->
+    <div 
+      class="relative bg-white rounded-lg shadow-md p-4 transition-all duration-300 ease-in-out 
+             hover:cursor-pointer break-inside-avoid-column"
+      class:col-span-all="{active.index === i && active.level >= 1}" 
+      class:expanded-vertical="{active.index === i && active.level === 2}"
+      on:click={() => handleCardClick(i)} 
+      animate:flip>  <!-- animate:flip for smooth reflow animation -->
+      
+      <!-- Card header/summary content (always visible) -->
+      <h3 class="text-lg font-semibold">{item.title}</h3>
+      <p class="text-gray-700">{item.summary}</p>
 
-  <!-- Masonry layout using CSS columns -->
-  <div class="columns-2 gap-2 space-y-2">
-    {#each cards as card, i (card.id)}
-      <div
-        id={`card-${card.id}`}
-        class="break-inside-avoid mb-2 transition-all duration-300 ease-in-out bg-white rounded-lg shadow-lg overflow-hidden flex flex-col"
-        class:p-4={card.zoom === 0}
-        class:p-6={card.zoom === 1}
-        class:p-8={card.zoom === 2}
-        animate:flip
-      >
-        <img
-          src={card.image}
-          alt={card.title}
-          class="w-full object-cover rounded transition-all duration-300"
-          class:h-40={card.zoom === 0}
-          class:h-60={card.zoom === 1}
-          class:h-80={card.zoom === 2}
-        />
-        <h2
-          class="mt-4 font-bold transition-all duration-300"
-          class:text-lg={card.zoom === 0}
-          class:text-xl={card.zoom === 1}
-          class:text-2xl={card.zoom === 2}
-        >
-          {card.title}
-        </h2>
-        <p
-          class="mt-2 text-gray-700 transition-all duration-300 flex-1"
-          class:text-sm={card.zoom === 0}
-          class:text-base={card.zoom === 1}
-          class:text-lg={card.zoom === 2}
-        >
-          {card.content}
-        </p>
-        {#if card.zoom === 2}
-          <p class="mt-2 text-gray-600 text-lg">{card.extra}</p>
-        {/if}
-        <button
-          onclick={() => cycleZoom(i)}
-          class="mt-4 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium py-2 px-4 rounded transition-colors"
-        >
-          {card.zoom === 0 ? 'Read More' : card.zoom === 1 ? 'Expand Fully' : 'Collapse'}
-        </button>
-      </div>
-    {/each}
-  </div>
+      <!-- Extended content (visible only at zoom level 2) -->
+      {#if active.index === i && active.level === 2}
+        <div class="mt-4">
+          <p class="text-gray-600">{item.details}</p>
+          <!-- Additional extended content could go here (images, links, etc.) -->
+        </div>
+      {/if}
+    </div>
+  {/each}
 </div>
+
+<style>
+  /* Custom utility for column-span if not using a plugin */
+  :global(.col-span-all) {
+    column-span: all;
+  }
+  /* Example styling for fully expanded card (zoom level 2) */
+  :global(.expanded-vertical) {
+    /* Ensure the expanded card is above others (if overlapping) */
+    z-index: 10;
+  }
+  /* (Optional) You can add a smooth max-height transition for extended content, 
+     but since we're using conditional rendering, it's not necessary here. */
+</style>
