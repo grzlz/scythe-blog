@@ -1,6 +1,5 @@
 <script>
-	import '../app.css';
-
+	import '../app.css'; // Import global styles once here
 	let { children } = $props();
 </script>
 
