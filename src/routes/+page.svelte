@@ -14,7 +14,7 @@
         <h1 class="text-4xl font-bold text-center mb-8 text-white">Latest Blog Posts</h1>
         
         <!-- Masonry grid: 1 column on mobile, 2 on sm, 3 on lg, 4 on xl -->
-        <div class="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-6 [column-fill:_balance]">
+        <div class="sm:columns-2 lg:columns-3 xl:columns-4 gap-6 [column-fill:_balance]">
             {#each posts as post}
                 <article class="mb-6 break-inside-avoid rounded-lg bg-secondary-900 shadow-lg overflow-hidden inline-block w-full hover:shadow-xl transition-shadow duration-300">
                     <!-- Image -->
