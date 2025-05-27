@@ -1,5 +1,9 @@
 <script>
-	import { posts } from '$lib/data/posts.js';
+	let { data } = $props();
+
+    let posts = data.posts
+
+
 
 	// Svelte 5: No need for a separate load function for simple data like this
 	// The posts are directly available from the import.
