@@ -1,7 +1,6 @@
 <script>
     let { data } = $props();
-    let posts = data.posts;
-    
+    let posts = data.posts.slice(0, 9); // Limit to max 9 posts as requested
     // Track zoom levels for each post (0, 1, 2, 3)
     let zoomLevels = $state({});
     
@@ -12,6 +11,26 @@
     
     function getZoomLevel(postId) {
         return zoomLevels[postId] || 0;
+    }
+    
+    // Helper functions for grid layout
+    function getGridArea(postId, zoomLevel) {
+        // For a true masonry layout, we need to calculate grid areas dynamically
+        // based on zoom level to ensure consistent spacing
+        if (zoomLevel === 0) return ""; // Default placement
+        
+        // For zoomed items, we'll return specific grid areas
+        // This ensures they take up the right amount of space
+        if (zoomLevel === 1) return "span 1 / span 2"; // Span 2 columns
+        if (zoomLevel === 2) return "span 2 / span 2"; // Span 2 columns and 2 rows
+        if (zoomLevel === 3) return "span 2 / span 3"; // Span 3 columns and 2 rows
+        
+        return "";
+    }
+    
+    // Calculate z-index based on zoom level for proper stacking
+    function getZIndex(zoomLevel) {
+        return zoomLevel * 10;
     }
 </script>
 
@@ -259,69 +278,69 @@
                         Latest Blog Posts
                     </h1>
                     <p class="text-gray-400 text-lg max-w-2xl mx-auto">
-                        Discover insights, tutorials, and stories through our interactive cascade layout
+                        Discover insights, tutorials, and stories through our interactive masonry layout
                     </p>
                 </div>
                 
-                <!-- Advanced Flex Masonry Container -->
-                <div class="masonry-container">
+                <!-- True CSS Grid Masonry Layout -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[minmax(200px,auto)]">
                     {#each posts as post, index}
                         {@const zoomLevel = getZoomLevel(post.id || index)}
+                        {@const gridArea = getGridArea(post.id || index, zoomLevel)}
+                        {@const zIndex = getZIndex(zoomLevel)}
                         <article 
-                            class="masonry-item backdrop-blur-card stagger-item zoom-{zoomLevel} 
-                                   group cursor-pointer select-none cascade-push"
+                            class="relative overflow-hidden rounded-xl shadow-lg transition-all duration-700 ease-in-out
+                                  bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-800
+                                  hover:shadow-xl group"
                             style="
-                                animation-delay: {index * 0.1}s;
+                                grid-area: {gridArea};
+                                z-index: {zIndex};
+                                transform: scale({1 + zoomLevel * 0.01}) translateZ({zoomLevel * 10}px);
+                                transition-delay: {index * 0.05}s;
                                 border-radius: {16 + zoomLevel * 4}px;
-                                background: linear-gradient(135deg, 
-                                    rgba(17, 24, 39, 0.95) 0%, 
-                                    rgba(31, 41, 55, 0.9) 100%);
-                                border: 1px solid rgba(255, 255, 255, {0.05 + zoomLevel * 0.05});
+                                border-color: rgba(255, 255, 255, {0.05 + zoomLevel * 0.05});
+                                box-shadow: 0 {10 + zoomLevel * 10}px {20 + zoomLevel * 15}px rgba(0, 0, 0, 0.3);
                             "
                         >
-                            <!-- Image Container with advanced effects - only show after first click -->
-                            {#if post.image && zoomLevel >= 1}
-                                <div class="relative overflow-hidden image-reveal"
-                                     style="border-radius: {16 + zoomLevel * 4}px {16 + zoomLevel * 4}px 0 0;">
+                            <!-- Image Container - show for all zoom levels -->
+                            {#if post.image}
+                                <div class="relative overflow-hidden" 
+                                     style="
+                                        height: {zoomLevel === 0 ? 150 : zoomLevel === 1 ? 200 : zoomLevel === 2 ? 250 : 300}px;
+                                        transition: height 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+                                     ">
                                     <img 
                                         src={post.image} 
                                         alt={post.title}
-                                        class="w-full object-cover image-fluid group-hover:scale-105"
+                                        class="w-full h-full object-cover transition-all duration-700 ease-in-out group-hover:scale-105"
                                         style="
-                                            height: {zoomLevel === 1 ? 250 : zoomLevel === 2 ? 300 : zoomLevel === 3 ? 400 : 200}px;
-                                            filter: brightness({0.9 + zoomLevel * 0.1}) contrast({1 + zoomLevel * 0.1});
+                                            filter: brightness({0.9 + zoomLevel * 0.1}) contrast({1 + zoomLevel * 0.05});
                                         "
                                         loading="lazy"
                                     />
                                     <!-- Overlay gradient -->
-                                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                </div>
-                            {/if}
+                                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900/70 to-transparent"></div>
                             
-                            <!-- Content Container with fluid spacing -->
-                            <div class="content-wrapper"
-                                 class:p-4={zoomLevel === 0}
-                                 class:p-5={zoomLevel === 1}
-                                 class:p-6={zoomLevel === 2}
-                                 class:p-8={zoomLevel === 3}>
-                                
-                                <!-- Category Badge with fluid scaling -->
-                                <div class="mb-3 flex flex-wrap gap-2">
-                                    <span class="inline-flex items-center gap-1 bg-gradient-to-r from-blue-600 to-purple-600 
-                                               text-white font-semibold px-3 py-1.5 text-fluid
-                                               hover:from-blue-500 hover:to-purple-500 transition-all duration-300"
+                                    <!-- Category Badge - positioned on image -->
+                                    <div class="absolute bottom-4 left-4">
+                                        <span class="inline-flex items-center gap-1 bg-gradient-to-r from-blue-600 to-purple-600 
+                                                   text-white font-semibold px-3 py-1.5 
+                                                   transition-all duration-300 rounded-full"
                                           class:text-xs={zoomLevel === 0}
                                           class:text-sm={zoomLevel === 1}
-                                          class:text-base={zoomLevel === 2}
-                                          class:text-lg={zoomLevel === 3}
-                                          style="border-radius: {12 + zoomLevel * 3}px;">
-                                        <span class="w-2 h-2 bg-white/50 rounded-full"></span>
+                                              class:text-base={zoomLevel >= 2}>
+                                            <span class="w-2 h-2 bg-white/50 rounded-full"></span>
                                         {post.category}
                                     </span>
                                 </div>
+                                </div>
+                                {/if}
                                 
+                            <!-- Content Container -->
+                            <div class="p-5 flex flex-col h-[calc(100%-{zoomLevel === 0 ? 150 : zoomLevel === 1 ? 200 : zoomLevel === 2 ? 250 : 300}px)]"
+                                 style="transition: padding 0.5s ease-out;">
                                 <!-- Title with fluid typography -->
-                                <h2 class="font-bold mb-3 text-white leading-tight text-fluid 
+                                <h2 class="font-bold mb-3 text-white leading-tight 
                                          group-hover:text-blue-100 transition-colors duration-300"
                                     class:text-lg={zoomLevel === 0}
                                     class:text-xl={zoomLevel === 1}
@@ -329,14 +348,13 @@
                                     class:text-3xl={zoomLevel === 3}>
                                     {post.title}
                                 </h2>
-                                
                                 <!-- Excerpt with fluid sizing -->
-                                <div class="flex-1 mb-4">
-                                    <p class="text-gray-300 leading-relaxed text-fluid"
-                                       class:text-sm={zoomLevel === 0}
-                                       class:text-base={zoomLevel === 1}
-                                       class:text-lg={zoomLevel === 2}
-                                       class:text-xl={zoomLevel === 3}>
+                                <div class="mb-4">
+                                    <p class="text-gray-300 leading-relaxed"
+                                            class:text-sm={zoomLevel === 0}
+                                            class:text-base={zoomLevel === 1}
+                                       class:line-clamp-3={zoomLevel <= 1}
+                                       class:text-lg={zoomLevel >= 2}>
                                         {post.excerpt}
                                     </p>
                                 </div>
@@ -344,100 +362,92 @@
                                 <!-- Progressive Content Reveal -->
                                 {#if zoomLevel >= 2}
                                     <div class="text-gray-300 mb-6 leading-relaxed prose prose-invert max-w-none 
-                                               content-wrapper prose-headings:text-white prose-links:text-blue-400
+                                               prose-headings:text-white prose-links:text-blue-400
                                                prose-code:text-pink-400 prose-code:bg-gray-800/50 prose-code:px-1 prose-code:rounded
-                                               flex-1"
+                                               overflow-y-auto"
                                          class:prose-sm={zoomLevel === 2}
-                                         class:prose-base={zoomLevel === 3}>
+                                         class:prose-base={zoomLevel === 3}
+                                         style="max-height: {zoomLevel === 2 ? '200px' : '400px'}; transition: max-height 0.7s ease-out;">
                                         {@html post.content}
                                     </div>
                                 {/if}
                                 
-                                <!-- Metadata Section with advanced layout -->
+                                <!-- Metadata Section -->
                                 <div class="mt-auto space-y-3">
                                     <!-- Author and Reading Time -->
-                                    <div class="flex items-center justify-between text-gray-400 text-fluid"
+                                    <div class="flex items-center justify-between text-gray-400"
                                          class:text-xs={zoomLevel === 0}
-                                         class:text-sm={zoomLevel === 1}
-                                         class:text-base={zoomLevel === 2}
-                                         class:text-lg={zoomLevel === 3}>
+                                         class:text-sm={zoomLevel >= 1}>
                                         <div class="flex items-center gap-2">
                                             <div class="w-6 h-6 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full 
                                                        flex items-center justify-center text-white font-semibold text-xs">
                                                 {post.author?.charAt(0) || 'A'}
-                                            </div>
+                </div>
                                             <span class="font-medium">{post.author}</span>
-                                        </div>
+            </div>
                                         <span class="flex items-center gap-1">
                                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
                                             </svg>
                                             {post.readTime}
                                         </span>
-                                    </div>
+        </div>
                                     
                                     <!-- Date -->
-                                    <div class="text-gray-500 text-fluid flex items-center gap-2"
-                                         class:text-xs={zoomLevel === 0}
-                                         class:text-sm={zoomLevel === 1}
-                                         class:text-base={zoomLevel === 2}
-                                         class:text-lg={zoomLevel === 3}>
-                                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
-                                        </svg>
-                                        {new Date(post.date).toLocaleDateString('en-US', { 
-                                            year: 'numeric', 
-                                            month: 'long', 
-                                            day: 'numeric' 
-                                        })}
-                                    </div>
+                                    {#if zoomLevel >= 1}
+                                        <div class="text-gray-500 flex items-center gap-2"
+                                             class:text-xs={zoomLevel === 1}
+                                             class:text-sm={zoomLevel >= 2}>
+                                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
+                                            </svg>
+                                            {new Date(post.date).toLocaleDateString('en-US', { 
+                                                year: 'numeric', 
+                                                month: 'long', 
+                                                day: 'numeric' 
+                                            })}
+    </div>
+                                    {/if}
                                     
-                                    <!-- Tags with fluid layout -->
-                                    {#if post.tags && post.tags.length > 0}
+                                    <!-- Tags -->
+                                    {#if post.tags && post.tags.length > 0 && zoomLevel >= 1}
                                         <div class="flex flex-wrap gap-2">
                                             {#each post.tags as tag}
-                                                <span class="bg-gray-800/60 text-gray-300 px-2.5 py-1 text-fluid 
-                                                           border border-gray-700/50 hover:border-gray-600/50 
+                                                <span class="bg-gray-800/60 text-gray-300 px-2.5 py-1 
+                                                           border border-gray-700/50 rounded-full
                                                            hover:bg-gray-700/60 transition-all duration-200"
-                                                      class:text-xs={zoomLevel === 0}
-                                                      class:text-sm={zoomLevel === 1}
-                                                      class:text-base={zoomLevel === 2}
-                                                      class:text-lg={zoomLevel === 3}
-                                                      style="border-radius: {8 + zoomLevel * 2}px;">
+                                                      class:text-xs={zoomLevel === 1}
+                                                      class:text-sm={zoomLevel >= 2}>
                                                     #{tag}
                                                 </span>
                                             {/each}
-                                        </div>
+</div>
                                     {/if}
                                     
                                     <!-- Interactive Zoom Button -->
                                     <button class="w-full bg-gradient-to-r from-blue-600 via-purple-600 to-blue-700 
                                                  hover:from-blue-500 hover:via-purple-500 hover:to-blue-600
-                                                 text-white font-medium transition-all duration-500 text-fluid 
+                                                 text-white font-medium transition-all duration-500
                                                  hover:scale-[1.02] active:scale-[0.98] group/btn
-                                                 shadow-lg hover:shadow-xl transform-gpu"
+                                                 shadow-lg hover:shadow-xl rounded-lg"
                                             class:text-sm={zoomLevel === 0}
-                                            class:text-base={zoomLevel === 1}
-                                            class:text-lg={zoomLevel === 2}
-                                            class:text-xl={zoomLevel === 3}
+                                            class:text-base={zoomLevel >= 1}
                                             class:py-2={zoomLevel === 0}
                                             class:py-3={zoomLevel >= 1}
-                                            class:py-4={zoomLevel >= 3}
-                                            style="border-radius: {12 + zoomLevel * 4}px;"
                                             onclick={() => toggleZoom(post.id || index)}>
                                         <span class="flex items-center justify-center gap-2 group-hover/btn:gap-3 transition-all duration-300">
                                             {#if zoomLevel === 0}
                                                 <span class="text-lg group-hover/btn:scale-110 transition-transform duration-300">🔍</span>
-                                                Explore Post
+                                                Expand
                                             {:else if zoomLevel === 1}
                                                 <span class="text-lg group-hover/btn:scale-110 transition-transform duration-300">📏</span>
-                                                Expand Vertically
+                                                More Details
                                             {:else if zoomLevel === 2}
                                                 <span class="text-lg group-hover/btn:scale-110 transition-transform duration-300">🚀</span>
-                                                Full Experience
+                                                Full View
                                             {:else}
                                                 <span class="text-lg group-hover/btn:scale-110 transition-transform duration-300">↩️</span>
-                                                Minimize View
+                                                Collapse
                                             {/if}
                                         </span>
                                     </button>
