@@ -1,148 +1,100 @@
 <script>
-  import { onMount } from 'svelte';
-  import { fade, fly, slide } from 'svelte/transition';
-  import { quintOut, elasticOut } from 'svelte/easing';
-  
-  // Import the data from +page.js
-  export let data;
-  
-  // Access the loaded posts
-  let items = data.posts;
-
-  // State for the active (expanded) card and its zoom level
-  let active = { index: null, level: 0 };
-  
-  // Track if the component is mounted (for smoother initial rendering)
-  let mounted = false;
-  
-  onMount(() => {
-    mounted = true;
-  });
-
-  function handleCardClick(i) {
-    if (active.index !== i) {
-      // Open clicked card to level 1
-      active = { index: i, level: 1 };
-    } else {
-      // Same card clicked again
-      if (active.level === 1) {
-        active = { index: i, level: 2 }; // expand further to level 2
-      } else if (active.level === 2) {
-        active = { index: null, level: 0 }; // collapse (optional)
-      }
+  let cards = $state([
+    {
+      id: 1,
+      title: "Card 1",
+      content: "This is a short summary for card 1. De todos modos necesito decir que esto es un texto de prueba. Necesito evaluar qiué pasa cuando hay conteido distinto",
+      extra: "This is additional content for card 1. Bla bla bla y entonces por eso bla bla bla. Entonces uwiwi.",
+      image: "https://picsum.photos/id/1015/600/400",
+      zoom: 0
+    },
+    {
+      id: 2,
+      title: "Card 2",
+      content: "This is a short summary for card 2.",
+      extra: "This is additional content for card 2. Bla bla bla y entonces por eso bla bla bla. Entonces uwiwi.",
+      image: "https://picsum.photos/id/1025/600/400",
+      zoom: 0
+    },
+    {
+      id: 3,
+      title: "Card 3",
+      content: "This is a short summary for card 3.",
+      extra: "This is additional content for card 3. Bla bla bla y entonces por eso bla bla bla. Entonces uwiwi.",
+      image: "https://picsum.photos/id/1035/600/400",
+      zoom: 0
+    },
+    {
+      id: 4,
+      title: "Card 4",
+      content: "This is a short summary for card 4.",
+      extra: "This is additional content for card 4. Bla bla bla y entonces por eso bla bla bla. Entonces uwiwi.",
+      image: "https://picsum.photos/id/1045/600/400",
+      zoom: 0
     }
-  }
-  
-  // Format date nicely
-  function formatDate(dateString) {
-    return new Date(dateString).toLocaleDateString('en-US', { 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
-    });
+  ]);
+
+  function cycleZoom(index) {
+    cards[index].zoom = (cards[index].zoom + 1) % 3;
+    if (cards[index].zoom === 2) {
+      setTimeout(() => {
+        document.getElementById(`card-${cards[index].id}`)?.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }, 10);
+    }
   }
 </script>
 
-<!-- Masonry container: 2 columns on medium+, 1 column on small -->
-<div class="columns-2 sm:columns-1 gap-4 md:gap-6">
-  {#each items as item, i (item.slug)}
-    <!-- Each card with improved transitions -->
-    <div 
-      class="relative bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden mb-4 md:mb-6
-             hover:shadow-lg transition-all duration-500 ease-in-out 
-             hover:cursor-pointer break-inside-avoid-column"
-      class:col-span-all="{active.index === i && active.level >= 1}" 
-      class:expanded-vertical="{active.index === i && active.level === 2}"
-      on:click={() => handleCardClick(i)} 
-      animate:flip={{ duration: 500, easing: quintOut }}>
-      
-      <!-- Card image (if available) -->
-      {#if item.image}
-        <div class="w-full" style="height: {active.index === i ? '250px' : '150px'}; transition: height 0.5s ease-in-out;">
-          <img 
-            src={item.image} 
-            alt={item.title} 
-            class="w-full h-full object-cover transition-all duration-500"
-          />
-        </div>
-      {/if}
-      
-      <!-- Card content with padding -->
-      <div class="p-4 md:p-5">
-        <!-- Card header/summary content (always visible) -->
-        <div class="flex justify-between items-start mb-2">
-          <h3 class="text-lg md:text-xl font-semibold text-gray-900 dark:text-white">{item.title}</h3>
-          {#if mounted && (active.index !== i || active.level < 2)}
-            <span 
-              class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded dark:bg-blue-900 dark:text-blue-300"
-              transition:fade={{ duration: 200 }}
-            >
-              {item.readTime}
-            </span>
-          {/if}
-        </div>
-        
-        <!-- Post metadata -->
-        <div class="text-xs text-gray-500 dark:text-gray-400 mb-2">
-          {formatDate(item.date)} • {item.author}
-        </div>
-        
-        <!-- Summary -->
-        <p class="text-gray-700 dark:text-gray-300">{item.excerpt}</p>
-        
-        <!-- Tags -->
-        {#if item.tags && item.tags.length > 0}
-          <div class="mt-3 flex flex-wrap gap-1">
-            {#each item.tags as tag}
-              <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded dark:bg-gray-700 dark:text-gray-300">
-                #{tag}
-              </span>
-            {/each}
-          </div>
-        {/if}
+<div class="bg-gray-100 min-h-screen p-8">
+  <h1 class="text-4xl font-bold text-center mb-10">Zoomable Cards in Masonry Layout</h1>
 
-        <!-- Extended content (visible only at zoom level 2) -->
-        {#if active.index === i && active.level === 2 && mounted}
-          <div class="mt-4" transition:slide={{ duration: 400, easing: quintOut }}>
-            <hr class="my-3 border-gray-200 dark:border-gray-700" />
-            <div class="prose prose-sm dark:prose-invert max-w-none">
-              <p class="text-gray-600 dark:text-gray-300">{item.content}</p>
-            </div>
-            
-            <!-- Category -->
-            <div class="mt-4">
-              <span class="text-sm bg-gray-200 text-gray-700 px-3 py-1 rounded-full dark:bg-gray-700 dark:text-gray-300">
-                {item.category}
-              </span>
-            </div>
-          </div>
+  <!-- Masonry layout using CSS columns -->
+  <div class="columns-2 gap-2 space-y-2">
+    {#each cards as card, i (card.id)}
+      <div
+        id={`card-${card.id}`}
+        class="break-inside-avoid mb-2 transition-all duration-300 ease-in-out bg-white rounded-lg shadow-lg overflow-hidden flex flex-col"
+        class:p-4={card.zoom === 0}
+        class:p-6={card.zoom === 1}
+        class:p-8={card.zoom === 2}
+        animate:flip
+      >
+        <img
+          src={card.image}
+          alt={card.title}
+          class="w-full object-cover rounded transition-all duration-300"
+          class:h-40={card.zoom === 0}
+          class:h-60={card.zoom === 1}
+          class:h-80={card.zoom === 2}
+        />
+        <h2
+          class="mt-4 font-bold transition-all duration-300"
+          class:text-lg={card.zoom === 0}
+          class:text-xl={card.zoom === 1}
+          class:text-2xl={card.zoom === 2}
+        >
+          {card.title}
+        </h2>
+        <p
+          class="mt-2 text-gray-700 transition-all duration-300 flex-1"
+          class:text-sm={card.zoom === 0}
+          class:text-base={card.zoom === 1}
+          class:text-lg={card.zoom === 2}
+        >
+          {card.content}
+        </p>
+        {#if card.zoom === 2}
+          <p class="mt-2 text-gray-600 text-lg">{card.extra}</p>
         {/if}
+        <button
+          onclick={() => cycleZoom(i)}
+          class="mt-4 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium py-2 px-4 rounded transition-colors"
+        >
+          {card.zoom === 0 ? 'Read More' : card.zoom === 1 ? 'Expand Fully' : 'Collapse'}
+        </button>
       </div>
-    </div>
-  {/each}
+    {/each}
+  </div>
 </div>
-
-<style>
-  /* Custom utility for column-span if not using a plugin */
-  :global(.col-span-all) {
-    column-span: all;
-    margin-bottom: 1.5rem;
-  }
-  
-  /* Styling for fully expanded card (zoom level 2) */
-  :global(.expanded-vertical) {
-    /* Ensure the expanded card is above others */
-    z-index: 10;
-    /* Add more vertical space for expanded content */
-    max-height: none;
-    transform: scale(1.01);
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1),
-                0 8px 10px -6px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Add smooth transitions to all elements that might change */
-  :global(.transition-all) {
-    transition-property: all;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  }
-</style>
