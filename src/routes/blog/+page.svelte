@@ -1,75 +1,143 @@
 <script>
-	let { data } = $props();
+  import { onMount } from 'svelte';
+  import { fade, fly, slide } from 'svelte/transition';
+  import { quintOut } from 'svelte/easing';
 
-    let posts = data.posts
+  let { data } = $props();
+  let items = data.posts;
 
+  let active = $state({ index: null, level: 0 });
+  let mounted = $state(false);
 
+  onMount(() => {
+    mounted = true;
+  });
 
-	// Svelte 5: No need for a separate load function for simple data like this
-	// The posts are directly available from the import.
+  function handleCardClick(i) {
+    if (active.index !== i) {
+      active = { index: i, level: 1 };
+    } else {
+      active = active.level === 1
+        ? { index: i, level: 2 }
+        : { index: null, level: 0 };
+    }
+  }
+
+  function formatDate(dateString) {
+    return new Date(dateString).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  }
 </script>
 
-<svelte:head>
-	<title>All Posts | Svelte & Tailwind Blog</title>
-	<meta name="description" content="A collection of insightful blog posts." />
-</svelte:head>
+<div class="container">
+  <div class="grid-layout">
+    {#each items as item, i (item.slug)}
+      <div 
+        class="card"
+        class:col-span-all="{active.index === i && active.level >= 1}" 
+        class:expanded-vertical="{active.index === i && active.level === 2}"
+        on:click={() => handleCardClick(i)} 
+        animate:flip={{ duration: 500, easing: quintOut }}>
+        
+        {#if item.image}
+          <div class="card-image" style="height: {active.index === i ? '250px' : '150px'};">
+            <img src={item.image} alt={item.title} class="image" />
+          </div>
+        {/if}
+        
+        <div class="card-content">
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{item.title}</h3>
+            {#if mounted && (active.index !== i || active.level < 2)}
+              <span 
+                class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded dark:bg-blue-900 dark:text-blue-300"
+                transition:fade={{ duration: 200 }}>
+                {item.readTime}
+              </span>
+            {/if}
+          </div>
+          
+          <div class="text-xs text-gray-500 dark:text-gray-400 mb-2">
+            {formatDate(item.date)} • {item.author}
+          </div>
+          
+          <p class="text-gray-700 dark:text-gray-300">{item.excerpt}</p>
+          
+          {#if item.tags?.length}
+            <div class="mt-3 flex flex-wrap gap-1">
+              {#each item.tags as tag}
+                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded dark:bg-gray-700 dark:text-gray-300">
+                  #{tag}
+                </span>
+              {/each}
+            </div>
+          {/if}
 
-<div class="space-y-12">
-	<section class="text-center py-12 bg-white dark:bg-gray-900 shadow-lg rounded-lg">
-		<h1 class="text-5xl font-bold text-sky-600 dark:text-sky-400 mb-4">Welcome to the Blog</h1>
-		<p class="text-xl text-gray-600 dark:text-gray-300">
-			Exploring Svelte, Tailwind, and modern web development.
-		</p>
-	</section>
-
-	<section>
-		<h2 class="text-3xl font-semibold mb-8 text-gray-700 dark:text-gray-200">Latest Posts</h2>
-		<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-			{#each posts as post}
-				<article
-					class="bg-white dark:bg-gray-900 rounded-lg shadow-xl overflow-hidden transition-all hover:shadow-2xl hover:scale-[1.02]"
-				>
-					{#if post.image}
-						<a href="/blog/{post.slug}">
-							<img
-								src={post.image}
-								alt="Cover image for {post.title}"
-								class="w-full h-48 object-cover"
-								loading="lazy"
-							/>
-						</a>
-					{/if}
-					<div class="p-6">
-						<div class="mb-3">
-							{#each post.tags || [] as tag}
-								<span
-									class="inline-block bg-cyan-100 dark:bg-cyan-700 text-cyan-700 dark:text-cyan-200 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full"
-								>
-									{tag}
-								</span>
-							{/each}
-						</div>
-						<h3 class="text-2xl font-bold mb-2">
-							<a href="/blog/{post.slug}" class="text-gray-800 dark:text-white hover:text-sky-600 dark:hover:text-sky-400 transition-colors">
-								{post.title}
-							</a>
-						</h3>
-						<p class="text-gray-500 dark:text-gray-400 text-sm mb-3">
-							By {post.author || 'Anonymous'} on {new Date(post.date).toLocaleDateString()}
-						</p>
-						<p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
-							{post.excerpt}
-						</p>
-						<a
-							href="/blog/{post.slug}"
-							class="inline-block text-sky-600 dark:text-sky-400 hover:text-sky-700 dark:hover:text-sky-300 font-semibold hover:underline"
-						>
-							Read more &rarr;
-						</a>
-					</div>
-				</article
-				>
-			{/each}
-		</div>
-	</section>
+          {#if active.index === i && active.level === 2 && mounted}
+            <div class="mt-4" transition:slide={{ duration: 400, easing: quintOut }}>
+              <hr class="my-3 border-gray-200 dark:border-gray-700" />
+              <div class="prose prose-sm dark:prose-invert max-w-none">
+                <p class="text-gray-600 dark:text-gray-300">{item.content}</p>
+              </div>
+              <div class="mt-4">
+                <span class="text-sm bg-gray-200 text-gray-700 px-3 py-1 rounded-full dark:bg-gray-700 dark:text-gray-300">
+                  {item.category}
+                </span>
+              </div>
+            </div>
+          {/if}
+        </div>
+      </div>
+    {/each}
+  </div>
 </div>
+
+<style>
+  .grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .card {
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .col-span-all {
+    grid-column: 1 / -1;
+  }
+
+  .expanded-vertical {
+    z-index: 10;
+    transform: scale(1.01);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1),
+                0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-image {
+    width: 100%;
+    transition: height 0.5s ease-in-out;
+  }
+
+  .image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .card-content {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+</style>
