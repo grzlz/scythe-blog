@@ -4,155 +4,15 @@
     
     // Track zoom levels for each post (0, 1, 2, 3)
     let zoomLevels = $state({});
-    let masonryContainer;
-    let isLayouting = false;
     
     function toggleZoom(postId) {
         const currentLevel = zoomLevels[postId] || 0;
         zoomLevels[postId] = currentLevel >= 3 ? 0 : currentLevel + 1;
-        
-        // Trigger layout recalculation after zoom animation
-        setTimeout(() => {
-            layoutMasonry();
-        }, 100);
     }
     
     function getZoomLevel(postId) {
         return zoomLevels[postId] || 0;
     }
-    
-    function layoutMasonry() {
-        if (!masonryContainer || isLayouting) return;
-        
-        isLayouting = true;
-        const items = Array.from(masonryContainer.children);
-        const containerWidth = masonryContainer.offsetWidth;
-        const gap = 24; // 1.5rem consistent gap
-        
-        // Determine column count based on screen size
-        let columnCount;
-        if (window.innerWidth >= 1024) {
-            columnCount = 3;
-        } else if (window.innerWidth >= 768) {
-            columnCount = 2;
-        } else {
-            columnCount = 2; // Always 2 columns on mobile
-        }
-        
-        const columnWidth = (containerWidth - gap * (columnCount - 1)) / columnCount;
-        const columnHeights = new Array(columnCount).fill(0);
-        
-        items.forEach((item, index) => {
-            const postId = posts[index]?.id || index;
-            const zoomLevel = getZoomLevel(postId);
-            
-            // Determine item width based on zoom level
-            let itemColumnSpan = 1;
-            if (zoomLevel >= 2 && columnCount > 1) {
-                itemColumnSpan = Math.min(2, columnCount); // Span 2 columns max
-            }
-            if (zoomLevel >= 3) {
-                itemColumnSpan = columnCount; // Full width
-            }
-            
-            // Find the shortest column(s) for placement
-            let shortestColumnIndex = 0;
-            let shortestHeight = columnHeights[0];
-            
-            if (itemColumnSpan === 1) {
-                // Single column placement - find shortest column
-                for (let i = 1; i < columnCount; i++) {
-                    if (columnHeights[i] < shortestHeight) {
-                        shortestHeight = columnHeights[i];
-                        shortestColumnIndex = i;
-                    }
-                }
-            } else {
-                // Multi-column placement - find best consecutive columns
-                let bestStartColumn = 0;
-                let bestHeight = Infinity;
-                
-                for (let i = 0; i <= columnCount - itemColumnSpan; i++) {
-                    let maxHeight = 0;
-                    for (let j = i; j < i + itemColumnSpan; j++) {
-                        maxHeight = Math.max(maxHeight, columnHeights[j]);
-                    }
-                    if (maxHeight < bestHeight) {
-                        bestHeight = maxHeight;
-                        bestStartColumn = i;
-                    }
-                }
-                
-                shortestColumnIndex = bestStartColumn;
-                shortestHeight = bestHeight;
-            }
-            
-            // Calculate position
-            const x = shortestColumnIndex * (columnWidth + gap);
-            const y = shortestHeight;
-            const width = itemColumnSpan * columnWidth + (itemColumnSpan - 1) * gap;
-            
-            // Apply positioning with smooth transition
-            item.style.position = 'absolute';
-            item.style.left = `${x}px`;
-            item.style.top = `${y}px`;
-            item.style.width = `${width}px`;
-            item.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-            
-            // Update column heights
-            const itemHeight = item.offsetHeight;
-            for (let i = shortestColumnIndex; i < shortestColumnIndex + itemColumnSpan; i++) {
-                columnHeights[i] = shortestHeight + itemHeight + gap;
-            }
-        });
-        
-        // Set container height
-        const maxHeight = Math.max(...columnHeights) - gap;
-        masonryContainer.style.height = `${maxHeight}px`;
-        
-        isLayouting = false;
-    }
-    
-    // Layout on mount and resize
-    function handleResize() {
-        setTimeout(layoutMasonry, 100);
-    }
-    
-    // Trigger initial layout after component mounts
-    $effect(() => {
-        if (masonryContainer) {
-            // Wait for images to load before initial layout
-            const images = masonryContainer.querySelectorAll('img');
-            let loadedImages = 0;
-            
-            const checkAllLoaded = () => {
-                loadedImages++;
-                if (loadedImages === images.length) {
-                    setTimeout(layoutMasonry, 100);
-                }
-            };
-            
-            if (images.length === 0) {
-                setTimeout(layoutMasonry, 100);
-            } else {
-                images.forEach(img => {
-                    if (img.complete) {
-                        checkAllLoaded();
-                    } else {
-                        img.addEventListener('load', checkAllLoaded);
-                        img.addEventListener('error', checkAllLoaded);
-                    }
-                });
-            }
-        }
-    });
-    
-    // Watch for zoom level changes and trigger relayout
-    $effect(() => {
-        // This effect runs when zoomLevels changes
-        Object.keys(zoomLevels);
-        setTimeout(layoutMasonry, 200);
-    });
 </script>
 
 <svelte:head>
@@ -160,13 +20,32 @@
     <meta name="description" content="A collection of insightful blog posts." />
 </svelte:head>
 
-<svelte:window on:resize={handleResize} />
-
 <style>
     .masonry-container {
-        position: relative;
-        width: 100%;
-        transition: height 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        align-items: flex-start;
+        transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    
+    /* Responsive gap adjustments */
+    @media (min-width: 1024px) {
+        .masonry-container {
+            gap: 2rem;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .masonry-container {
+            gap: 1rem;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .masonry-container {
+            gap: 0.75rem;
+        }
     }
     
     .masonry-item {
@@ -175,23 +54,27 @@
         overflow: hidden;
         position: relative;
         background: rgb(17 24 39);
-        will-change: transform, left, top, width, opacity;
+        will-change: transform, width, height, opacity;
         contain: layout style paint;
         transform-origin: center center;
         backface-visibility: hidden;
         perspective: 1000px;
+        flex-shrink: 0;
     }
     
-    /* Zoom level styles with enhanced visual effects */
+    /* Base widths for different screen sizes */
     .zoom-0 {
+        width: calc(50% - 0.75rem); /* 2 columns on mobile */
         transform: scale(1) translateZ(0) rotateX(0deg);
         z-index: 1;
         filter: brightness(0.95);
         transition: all 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
     
+    /* First zoom: Expand horizontally (x-axis) */
     .zoom-1 {
-        transform: scale(1.03) translateZ(10px) rotateX(-2deg);
+        width: calc(100% - 0rem); /* Takes full width, pushes others to next row */
+        transform: scale(1.01) translateZ(10px) rotateX(-1deg);
         z-index: 10;
         box-shadow: 
             0 10px 25px -5px rgba(0, 0, 0, 0.25),
@@ -200,8 +83,11 @@
         transition: all 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
     
+    /* Second zoom: Expand vertically (y-axis) while maintaining full width */
     .zoom-2 {
-        transform: scale(1.01) translateZ(20px) rotateX(-1deg);
+        width: calc(100% - 0rem);
+        min-height: 600px; /* Expand vertically */
+        transform: scale(1) translateZ(20px) rotateX(0deg);
         z-index: 20;
         box-shadow: 
             0 25px 50px -12px rgba(0, 0, 0, 0.35),
@@ -210,7 +96,10 @@
         transition: all 1.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
     
+    /* Third zoom: Maximum expansion */
     .zoom-3 {
+        width: calc(100% - 0rem);
+        min-height: 800px; /* Even more vertical expansion */
         transform: scale(1) translateZ(30px) rotateX(0deg);
         z-index: 30;
         box-shadow: 
@@ -221,6 +110,44 @@
         transition: all 1.6s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
     
+    /* Responsive width adjustments */
+    @media (min-width: 768px) {
+        .zoom-0 {
+            width: calc(50% - 1rem); /* 2 columns on tablet */
+        }
+    }
+    
+    @media (min-width: 1024px) {
+        .zoom-0 {
+            width: calc(33.333% - 1.33rem); /* 3 columns on desktop */
+        }
+        
+        .zoom-1 {
+            width: calc(66.666% - 0.66rem); /* 2/3 width on desktop for horizontal expansion */
+        }
+    }
+    
+    /* Smooth content transitions with enhanced fluidity */
+    .content-wrapper {
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: translateZ(0);
+        will-change: transform, opacity;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .text-fluid {
+        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        will-change: font-size, transform;
+    }
+    
+    .image-fluid {
+        transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        transform: translateZ(0);
+        will-change: transform, filter;
+    }
+    
     /* Enhanced hover effects with fluid motion */
     .masonry-item:hover {
         transform: scale(1.02) translateY(-4px) translateZ(5px) rotateX(-1deg);
@@ -229,17 +156,17 @@
     }
     
     .zoom-1:hover {
-        transform: scale(1.05) translateY(-6px) translateZ(15px) rotateX(-3deg);
+        transform: scale(1.02) translateY(-6px) translateZ(15px) rotateX(-2deg);
         transition-duration: 0.4s;
     }
     
     .zoom-2:hover {
-        transform: scale(1.03) translateY(-8px) translateZ(25px) rotateX(-2deg);
+        transform: scale(1.01) translateY(-4px) translateZ(25px) rotateX(-1deg);
         transition-duration: 0.4s;
     }
     
     .zoom-3:hover {
-        transform: scale(1.01) translateY(-2px) translateZ(35px) rotateX(-0.5deg);
+        transform: scale(1.005) translateY(-2px) translateZ(35px) rotateX(-0.5deg);
         transition-duration: 0.4s;
     }
     
@@ -296,26 +223,28 @@
         }
     }
     
-    /* Smooth content transitions with enhanced fluidity */
-    .content-wrapper {
-        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        transform: translateZ(0);
-        will-change: transform, opacity;
+    /* Cascade effect animation for flex wrap */
+    .cascade-push {
+        animation: cascadePush 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
     }
     
-    .text-fluid {
-        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        will-change: font-size, transform;
-    }
-    
-    .image-fluid {
-        transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        transform: translateZ(0);
-        will-change: transform, filter;
+    @keyframes cascadePush {
+        0% {
+            transform: translateX(0) translateY(0);
+            opacity: 1;
+        }
+        50% {
+            transform: translateX(20px) translateY(-10px);
+            opacity: 0.8;
+        }
+        100% {
+            transform: translateX(0) translateY(0);
+            opacity: 1;
+        }
     }
 </style>
 
-<!-- Advanced Masonry Layout -->
+<!-- Advanced Flex Masonry Layout -->
 <div class="bg-gradient-to-br from-slate-900 via-gray-900 to-slate-800 min-h-screen">
     <div class="relative">
         <!-- Background Pattern -->
@@ -330,17 +259,17 @@
                         Latest Blog Posts
                     </h1>
                     <p class="text-gray-400 text-lg max-w-2xl mx-auto">
-                        Discover insights, tutorials, and stories through our interactive masonry layout
+                        Discover insights, tutorials, and stories through our interactive cascade layout
                     </p>
                 </div>
                 
-                <!-- True Masonry Container -->
-                <div class="masonry-container" bind:this={masonryContainer}>
+                <!-- Advanced Flex Masonry Container -->
+                <div class="masonry-container">
                     {#each posts as post, index}
                         {@const zoomLevel = getZoomLevel(post.id || index)}
                         <article 
                             class="masonry-item backdrop-blur-card stagger-item zoom-{zoomLevel} 
-                                   group cursor-pointer select-none"
+                                   group cursor-pointer select-none cascade-push"
                             style="
                                 animation-delay: {index * 0.1}s;
                                 border-radius: {16 + zoomLevel * 4}px;
@@ -359,7 +288,7 @@
                                         alt={post.title}
                                         class="w-full object-cover image-fluid group-hover:scale-105"
                                         style="
-                                            height: {(post.imageHeight || 200) * (1 + zoomLevel * 0.4)}px;
+                                            height: {zoomLevel === 1 ? 250 : zoomLevel === 2 ? 300 : zoomLevel === 3 ? 400 : 200}px;
                                             filter: brightness({0.9 + zoomLevel * 0.1}) contrast({1 + zoomLevel * 0.1});
                                         "
                                         loading="lazy"
@@ -370,7 +299,7 @@
                             {/if}
                             
                             <!-- Content Container with fluid spacing -->
-                            <div class="content-wrapper flex flex-col justify-between min-h-full"
+                            <div class="content-wrapper"
                                  class:p-4={zoomLevel === 0}
                                  class:p-5={zoomLevel === 1}
                                  class:p-6={zoomLevel === 2}
@@ -416,7 +345,8 @@
                                 {#if zoomLevel >= 2}
                                     <div class="text-gray-300 mb-6 leading-relaxed prose prose-invert max-w-none 
                                                content-wrapper prose-headings:text-white prose-links:text-blue-400
-                                               prose-code:text-pink-400 prose-code:bg-gray-800/50 prose-code:px-1 prose-code:rounded"
+                                               prose-code:text-pink-400 prose-code:bg-gray-800/50 prose-code:px-1 prose-code:rounded
+                                               flex-1"
                                          class:prose-sm={zoomLevel === 2}
                                          class:prose-base={zoomLevel === 3}>
                                         {@html post.content}
@@ -500,8 +430,8 @@
                                                 <span class="text-lg group-hover/btn:scale-110 transition-transform duration-300">🔍</span>
                                                 Explore Post
                                             {:else if zoomLevel === 1}
-                                                <span class="text-lg group-hover/btn:scale-110 transition-transform duration-300">✨</span>
-                                                Zoom Deeper
+                                                <span class="text-lg group-hover/btn:scale-110 transition-transform duration-300">📏</span>
+                                                Expand Vertically
                                             {:else if zoomLevel === 2}
                                                 <span class="text-lg group-hover/btn:scale-110 transition-transform duration-300">🚀</span>
                                                 Full Experience
