@@ -195,7 +195,29 @@
         -webkit-backdrop-filter: blur(8px) saturate(120%);
     }
     
-    /* Smooth stagger animations with enhanced fluid motion */
+    /* Image reveal animation */
+    .image-reveal {
+        animation: imageSlideIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        transform-origin: top center;
+    }
+    
+    @keyframes imageSlideIn {
+        0% {
+            opacity: 0;
+            transform: translateY(-20px) scale(0.9);
+            clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        }
+        50% {
+            opacity: 0.7;
+            transform: translateY(-5px) scale(0.95);
+            clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        }
+    }
     .stagger-item {
         animation: staggerIn 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         opacity: 0;
@@ -275,9 +297,9 @@
                                 border: 1px solid rgba(255, 255, 255, {0.05 + zoomLevel * 0.05});
                             "
                         >
-                            <!-- Image Container with advanced effects -->
-                            {#if post.image}
-                                <div class="relative overflow-hidden"
+                            <!-- Image Container with advanced effects - only show after first click -->
+                            {#if post.image && zoomLevel >= 1}
+                                <div class="relative overflow-hidden image-reveal"
                                      style="border-radius: {16 + zoomLevel * 4}px {16 + zoomLevel * 4}px 0 0;">
                                     <img 
                                         src={post.image} 
