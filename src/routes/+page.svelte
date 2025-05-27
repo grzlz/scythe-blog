@@ -28,55 +28,103 @@
         grid-auto-rows: min-content;
         grid-auto-flow: row dense;
         align-items: start;
+        transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
     }
     
     .masonry-item {
-        transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        transition: all 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         border-radius: 16px;
         overflow: hidden;
         position: relative;
         background: rgb(17 24 39);
-        will-change: transform, grid-column, grid-row;
+        will-change: transform, grid-column, grid-row, opacity;
         contain: layout style paint;
+        transform-origin: center center;
+        backface-visibility: hidden;
+        perspective: 1000px;
     }
     
-    /* Zoom level styles with advanced grid positioning */
+    /* Zoom level styles with advanced grid positioning and fluid transitions */
     .zoom-0 {
         grid-column: span 1;
-        transform: scale(1) translateZ(0);
+        transform: scale(1) translateZ(0) rotateX(0deg);
         z-index: 1;
         filter: brightness(0.95);
+        transition: all 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
     
     .zoom-1 {
         grid-column: span 1;
-        transform: scale(1.03) translateZ(10px);
+        transform: scale(1.03) translateZ(10px) rotateX(-2deg);
         z-index: 10;
         box-shadow: 
             0 10px 25px -5px rgba(0, 0, 0, 0.25),
             0 20px 40px -12px rgba(0, 0, 0, 0.25);
         filter: brightness(1.05);
+        transition: all 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
     
     .zoom-2 {
         grid-column: span 2;
-        transform: scale(1.01) translateZ(20px);
+        transform: scale(1.01) translateZ(20px) rotateX(-1deg);
         z-index: 20;
         box-shadow: 
             0 25px 50px -12px rgba(0, 0, 0, 0.35),
             0 0 0 1px rgba(255, 255, 255, 0.05);
         filter: brightness(1.1);
+        transition: all 1.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        animation: expandToFullWidth 1.4s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
     }
     
     .zoom-3 {
         grid-column: 1 / -1;
-        transform: scale(1) translateZ(30px);
+        transform: scale(1) translateZ(30px) rotateX(0deg);
         z-index: 30;
         box-shadow: 
             0 35px 70px -12px rgba(0, 0, 0, 0.45),
             0 0 0 1px rgba(255, 255, 255, 0.1),
             inset 0 1px 0 rgba(255, 255, 255, 0.1);
         filter: brightness(1.15);
+        transition: all 1.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        animation: expandToFullGrid 1.6s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+    }
+    
+    @keyframes expandToFullWidth {
+        0% {
+            grid-column: span 1;
+            transform: scale(1.03) translateZ(10px) rotateY(5deg);
+            opacity: 0.9;
+        }
+        50% {
+            transform: scale(1.02) translateZ(15px) rotateY(0deg);
+            opacity: 0.95;
+        }
+        100% {
+            grid-column: span 2;
+            transform: scale(1.01) translateZ(20px) rotateX(-1deg);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes expandToFullGrid {
+        0% {
+            grid-column: span 2;
+            transform: scale(1.01) translateZ(20px) rotateY(-5deg);
+            opacity: 0.9;
+        }
+        30% {
+            transform: scale(1.005) translateZ(25px) rotateY(0deg);
+            opacity: 0.95;
+        }
+        70% {
+            transform: scale(1.002) translateZ(28px) rotateX(-0.5deg);
+            opacity: 0.98;
+        }
+        100% {
+            grid-column: 1 / -1;
+            transform: scale(1) translateZ(30px) rotateX(0deg);
+            opacity: 1;
+        }
     }
     
     /* Mobile-specific adjustments - always 2 columns */
@@ -101,37 +149,44 @@
         }
     }
     
-    /* Smooth content transitions */
+    /* Smooth content transitions with enhanced fluidity */
     .content-wrapper {
-        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         transform: translateZ(0);
+        will-change: transform, opacity;
     }
     
     .text-fluid {
-        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        will-change: font-size, transform;
     }
     
     .image-fluid {
-        transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         transform: translateZ(0);
+        will-change: transform, filter;
     }
     
-    /* Enhanced hover effects */
+    /* Enhanced hover effects with fluid motion */
     .masonry-item:hover {
-        transform: scale(1.02) translateY(-4px) translateZ(5px);
-        transition-duration: 0.3s;
+        transform: scale(1.02) translateY(-4px) translateZ(5px) rotateX(-1deg);
+        transition-duration: 0.4s;
+        transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     
     .zoom-1:hover {
-        transform: scale(1.05) translateY(-6px) translateZ(15px);
+        transform: scale(1.05) translateY(-6px) translateZ(15px) rotateX(-3deg);
+        transition-duration: 0.4s;
     }
     
     .zoom-2:hover {
-        transform: scale(1.03) translateY(-8px) translateZ(25px);
+        transform: scale(1.03) translateY(-8px) translateZ(25px) rotateX(-2deg);
+        transition-duration: 0.4s;
     }
     
     .zoom-3:hover {
-        transform: scale(1.01) translateY(-2px) translateZ(35px);
+        transform: scale(1.01) translateY(-2px) translateZ(35px) rotateX(-0.5deg);
+        transition-duration: 0.4s;
     }
     
     /* Advanced backdrop effects */
@@ -140,18 +195,48 @@
         -webkit-backdrop-filter: blur(8px) saturate(120%);
     }
     
-    /* Smooth stagger animations */
+    /* Smooth stagger animations with enhanced fluid motion */
     .stagger-item {
-        animation: staggerIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        animation: staggerIn 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         opacity: 0;
-        transform: translateY(30px) scale(0.95);
+        transform: translateY(40px) scale(0.92) rotateX(8deg);
+        will-change: transform, opacity;
+        backface-visibility: hidden;
     }
     
     @keyframes staggerIn {
-        to {
-            opacity: 1;
-            transform: translateY(0) scale(1);
+        0% {
+            opacity: 0;
+            transform: translateY(40px) scale(0.92) rotateX(8deg);
         }
+        50% {
+            opacity: 0.7;
+            transform: translateY(10px) scale(0.98) rotateX(2deg);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0) scale(1) rotateX(0deg);
+        }
+    }
+    
+    /* Additional fluid grid reflow animation */
+    @keyframes gridReflow {
+        0% {
+            transform: scale(0.95) translateY(20px);
+            opacity: 0.8;
+        }
+        50% {
+            transform: scale(1.02) translateY(-5px);
+            opacity: 0.9;
+        }
+        100% {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
+    }
+    
+    .grid-reflow {
+        animation: gridReflow 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
     }
 </style>
 
