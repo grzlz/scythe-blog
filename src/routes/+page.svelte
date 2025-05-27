@@ -4,15 +4,155 @@
     
     // Track zoom levels for each post (0, 1, 2, 3)
     let zoomLevels = $state({});
+    let masonryContainer;
+    let isLayouting = false;
     
     function toggleZoom(postId) {
         const currentLevel = zoomLevels[postId] || 0;
         zoomLevels[postId] = currentLevel >= 3 ? 0 : currentLevel + 1;
+        
+        // Trigger layout recalculation after zoom animation
+        setTimeout(() => {
+            layoutMasonry();
+        }, 100);
     }
     
     function getZoomLevel(postId) {
         return zoomLevels[postId] || 0;
     }
+    
+    function layoutMasonry() {
+        if (!masonryContainer || isLayouting) return;
+        
+        isLayouting = true;
+        const items = Array.from(masonryContainer.children);
+        const containerWidth = masonryContainer.offsetWidth;
+        const gap = 24; // 1.5rem consistent gap
+        
+        // Determine column count based on screen size
+        let columnCount;
+        if (window.innerWidth >= 1024) {
+            columnCount = 3;
+        } else if (window.innerWidth >= 768) {
+            columnCount = 2;
+        } else {
+            columnCount = 2; // Always 2 columns on mobile
+        }
+        
+        const columnWidth = (containerWidth - gap * (columnCount - 1)) / columnCount;
+        const columnHeights = new Array(columnCount).fill(0);
+        
+        items.forEach((item, index) => {
+            const postId = posts[index]?.id || index;
+            const zoomLevel = getZoomLevel(postId);
+            
+            // Determine item width based on zoom level
+            let itemColumnSpan = 1;
+            if (zoomLevel >= 2 && columnCount > 1) {
+                itemColumnSpan = Math.min(2, columnCount); // Span 2 columns max
+            }
+            if (zoomLevel >= 3) {
+                itemColumnSpan = columnCount; // Full width
+            }
+            
+            // Find the shortest column(s) for placement
+            let shortestColumnIndex = 0;
+            let shortestHeight = columnHeights[0];
+            
+            if (itemColumnSpan === 1) {
+                // Single column placement - find shortest column
+                for (let i = 1; i < columnCount; i++) {
+                    if (columnHeights[i] < shortestHeight) {
+                        shortestHeight = columnHeights[i];
+                        shortestColumnIndex = i;
+                    }
+                }
+            } else {
+                // Multi-column placement - find best consecutive columns
+                let bestStartColumn = 0;
+                let bestHeight = Infinity;
+                
+                for (let i = 0; i <= columnCount - itemColumnSpan; i++) {
+                    let maxHeight = 0;
+                    for (let j = i; j < i + itemColumnSpan; j++) {
+                        maxHeight = Math.max(maxHeight, columnHeights[j]);
+                    }
+                    if (maxHeight < bestHeight) {
+                        bestHeight = maxHeight;
+                        bestStartColumn = i;
+                    }
+                }
+                
+                shortestColumnIndex = bestStartColumn;
+                shortestHeight = bestHeight;
+            }
+            
+            // Calculate position
+            const x = shortestColumnIndex * (columnWidth + gap);
+            const y = shortestHeight;
+            const width = itemColumnSpan * columnWidth + (itemColumnSpan - 1) * gap;
+            
+            // Apply positioning with smooth transition
+            item.style.position = 'absolute';
+            item.style.left = `${x}px`;
+            item.style.top = `${y}px`;
+            item.style.width = `${width}px`;
+            item.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            
+            // Update column heights
+            const itemHeight = item.offsetHeight;
+            for (let i = shortestColumnIndex; i < shortestColumnIndex + itemColumnSpan; i++) {
+                columnHeights[i] = shortestHeight + itemHeight + gap;
+            }
+        });
+        
+        // Set container height
+        const maxHeight = Math.max(...columnHeights) - gap;
+        masonryContainer.style.height = `${maxHeight}px`;
+        
+        isLayouting = false;
+    }
+    
+    // Layout on mount and resize
+    function handleResize() {
+        setTimeout(layoutMasonry, 100);
+    }
+    
+    // Trigger initial layout after component mounts
+    $effect(() => {
+        if (masonryContainer) {
+            // Wait for images to load before initial layout
+            const images = masonryContainer.querySelectorAll('img');
+            let loadedImages = 0;
+            
+            const checkAllLoaded = () => {
+                loadedImages++;
+                if (loadedImages === images.length) {
+                    setTimeout(layoutMasonry, 100);
+                }
+            };
+            
+            if (images.length === 0) {
+                setTimeout(layoutMasonry, 100);
+            } else {
+                images.forEach(img => {
+                    if (img.complete) {
+                        checkAllLoaded();
+                    } else {
+                        img.addEventListener('load', checkAllLoaded);
+                        img.addEventListener('error', checkAllLoaded);
+                    }
+                });
+            }
+        }
+    });
+    
+    // Watch for zoom level changes and trigger relayout
+    $effect(() => {
+        // This effect runs when zoomLevels changes
+        Object.keys(zoomLevels);
+        setTimeout(layoutMasonry, 200);
+    });
 </script>
 
 <svelte:head>
@@ -20,15 +160,13 @@
     <meta name="description" content="A collection of insightful blog posts." />
 </svelte:head>
 
+<svelte:window on:resize={handleResize} />
+
 <style>
-    .masonry-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-        grid-auto-rows: min-content;
-        grid-auto-flow: row dense;
-        align-items: start;
-        transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    .masonry-container {
+        position: relative;
+        width: 100%;
+        transition: height 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     
     .masonry-item {
@@ -37,16 +175,15 @@
         overflow: hidden;
         position: relative;
         background: rgb(17 24 39);
-        will-change: transform, grid-column, grid-row, opacity;
+        will-change: transform, left, top, width, opacity;
         contain: layout style paint;
         transform-origin: center center;
         backface-visibility: hidden;
         perspective: 1000px;
     }
     
-    /* Zoom level styles with advanced grid positioning and fluid transitions */
+    /* Zoom level styles with enhanced visual effects */
     .zoom-0 {
-        grid-column: span 1;
         transform: scale(1) translateZ(0) rotateX(0deg);
         z-index: 1;
         filter: brightness(0.95);
@@ -54,7 +191,6 @@
     }
     
     .zoom-1 {
-        grid-column: span 1;
         transform: scale(1.03) translateZ(10px) rotateX(-2deg);
         z-index: 10;
         box-shadow: 
@@ -65,7 +201,6 @@
     }
     
     .zoom-2 {
-        grid-column: span 2;
         transform: scale(1.01) translateZ(20px) rotateX(-1deg);
         z-index: 20;
         box-shadow: 
@@ -73,11 +208,9 @@
             0 0 0 1px rgba(255, 255, 255, 0.05);
         filter: brightness(1.1);
         transition: all 1.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-        animation: expandToFullWidth 1.4s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
     }
     
     .zoom-3 {
-        grid-column: 1 / -1;
         transform: scale(1) translateZ(30px) rotateX(0deg);
         z-index: 30;
         box-shadow: 
@@ -86,85 +219,6 @@
             inset 0 1px 0 rgba(255, 255, 255, 0.1);
         filter: brightness(1.15);
         transition: all 1.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-        animation: expandToFullGrid 1.6s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-    }
-    
-    @keyframes expandToFullWidth {
-        0% {
-            grid-column: span 1;
-            transform: scale(1.03) translateZ(10px) rotateY(5deg);
-            opacity: 0.9;
-        }
-        50% {
-            transform: scale(1.02) translateZ(15px) rotateY(0deg);
-            opacity: 0.95;
-        }
-        100% {
-            grid-column: span 2;
-            transform: scale(1.01) translateZ(20px) rotateX(-1deg);
-            opacity: 1;
-        }
-    }
-    
-    @keyframes expandToFullGrid {
-        0% {
-            grid-column: span 2;
-            transform: scale(1.01) translateZ(20px) rotateY(-5deg);
-            opacity: 0.9;
-        }
-        30% {
-            transform: scale(1.005) translateZ(25px) rotateY(0deg);
-            opacity: 0.95;
-        }
-        70% {
-            transform: scale(1.002) translateZ(28px) rotateX(-0.5deg);
-            opacity: 0.98;
-        }
-        100% {
-            grid-column: 1 / -1;
-            transform: scale(1) translateZ(30px) rotateX(0deg);
-            opacity: 1;
-        }
-    }
-    
-    /* Mobile-specific adjustments - always 2 columns */
-    @media (max-width: 768px) {
-        .masonry-grid {
-            gap: 1rem;
-        }
-        
-        /* Adjust zoom behavior for mobile */
-        .zoom-2 {
-            grid-column: span 2;
-        }
-        
-        .zoom-3 {
-            grid-column: span 2;
-        }
-    }
-    
-    @media (max-width: 480px) {
-        .masonry-grid {
-            gap: 0.75rem;
-        }
-    }
-    
-    /* Smooth content transitions with enhanced fluidity */
-    .content-wrapper {
-        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        transform: translateZ(0);
-        will-change: transform, opacity;
-    }
-    
-    .text-fluid {
-        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        will-change: font-size, transform;
-    }
-    
-    .image-fluid {
-        transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        transform: translateZ(0);
-        will-change: transform, filter;
     }
     
     /* Enhanced hover effects with fluid motion */
@@ -218,6 +272,7 @@
             clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
         }
     }
+    
     .stagger-item {
         animation: staggerIn 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         opacity: 0;
@@ -241,28 +296,26 @@
         }
     }
     
-    /* Additional fluid grid reflow animation */
-    @keyframes gridReflow {
-        0% {
-            transform: scale(0.95) translateY(20px);
-            opacity: 0.8;
-        }
-        50% {
-            transform: scale(1.02) translateY(-5px);
-            opacity: 0.9;
-        }
-        100% {
-            transform: scale(1) translateY(0);
-            opacity: 1;
-        }
+    /* Smooth content transitions with enhanced fluidity */
+    .content-wrapper {
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: translateZ(0);
+        will-change: transform, opacity;
     }
     
-    .grid-reflow {
-        animation: gridReflow 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+    .text-fluid {
+        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        will-change: font-size, transform;
+    }
+    
+    .image-fluid {
+        transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        transform: translateZ(0);
+        will-change: transform, filter;
     }
 </style>
 
-<!-- Advanced Grid Masonry Layout -->
+<!-- Advanced Masonry Layout -->
 <div class="bg-gradient-to-br from-slate-900 via-gray-900 to-slate-800 min-h-screen">
     <div class="relative">
         <!-- Background Pattern -->
@@ -281,8 +334,8 @@
                     </p>
                 </div>
                 
-                <!-- Advanced Grid Masonry Container -->
-                <div class="masonry-grid">
+                <!-- True Masonry Container -->
+                <div class="masonry-container" bind:this={masonryContainer}>
                     {#each posts as post, index}
                         {@const zoomLevel = getZoomLevel(post.id || index)}
                         <article 
