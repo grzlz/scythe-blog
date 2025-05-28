@@ -10,7 +10,7 @@
 </script>
 
 <!-- Sección principal de Scythe -->
-<section class="min-h-full bg-primary-950 text-primary-100 flex flex-col items-center justify-center px-6 py-16">
+<section class="min-h-screen bg-primary-950 text-primary-100 flex flex-col items-center justify-center px-6 py-16">
   <div class="max-w-4xl text-left">
     <h1 class="text-4xl md:text-6xl font-extrabold mb-6 text-primary-50">¿Okey, pero qué es Scythe?</h1>
     <p class="mt-8 text-lg md:text-xl text-primary-300 mb-4">Trabajo compartido, valor distribuido.</p>
