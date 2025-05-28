@@ -56,7 +56,7 @@
         class="card"
         class:col-span-all={item.isSelected} 
         class:expanded-vertical={item.isExpanded}
-        on:click={() => handleCardClick(i)} 
+        onclick={() => handleCardClick(i)} 
         animate:flip={{ duration: 700, easing: cubicOut, delay: item.isSelected ? 0 : 30 }}>
         
         {#if item.image}
@@ -106,7 +106,7 @@
                  out:slide={{ duration: 400, easing: cubicOut }}>
               <hr class="my-3 border-gray-200 dark:border-gray-700" />
               <div class="prose prose-sm dark:prose-invert max-w-none">
-                <p class="text-gray-600 dark:text-gray-300">{item.content}</p>
+                <p class="text-gray-600 dark:text-gray-300">{@html item.content}</p>
               </div>
               <div class="mt-4">
                 <span class="text-sm bg-gray-200 text-gray-700 px-3 py-1 rounded-full dark:bg-gray-700 dark:text-gray-300"

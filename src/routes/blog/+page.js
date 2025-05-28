@@ -6,7 +6,15 @@ export function load() {
 				slug: 'short-post',
 				title: 'A Quick Thought',
 				excerpt: 'Short and sweet.',
-				content: '<p>Just a little something to ponder.</p>'
+				content: `
+					<p>When building modern web apps, performance matters.</p>
+					<p>We’ll look into TTFB, LCP, CLS, and other web vitals.</p>
+					<p>Techniques include prefetching, lazy loading, tree-shaking, and optimizing asset delivery through CDNs.</p>
+					<p>Understanding how browsers parse and render HTML helps in structuring pages efficiently.</p>
+					<p>Another key area is JavaScript — keeping bundles small and scoped helps performance significantly.</p>
+					<p>Image optimization, adaptive loading strategies, and measuring through tools like Lighthouse and WebPageTest are vital.</p>
+					<p>This article aims to be a complete reference for performance-minded developers.</p>
+				`
 			},
 			{
 				slug: 'medium-insight',

@@ -7,20 +7,48 @@ export function load({ params }) {
 			title: 'Hello world!',
 			subtitle: 'Welcome to our new blog - your gateway to amazing content',
 			content: `
-				<h2 id="introduction">Welcome to Our Blog</h2>
-				<p>Welcome to our blog! This is our very first post, and we're excited to share our journey with you. Here you'll find insights, tutorials, and thoughts on web development, technology, and more.</p>
-				
-				<h2 id="what-to-expect">What to Expect</h2>
-				<p>In the coming weeks and months, we'll be covering a wide range of topics including:</p>
-				<ul>
-					<li>Modern web development frameworks</li>
-					<li>Best practices and coding tips</li>
-					<li>Industry insights and trends</li>
-					<li>Project showcases and tutorials</li>
-				</ul>
-				
-				<h2 id="conclusion">Thank You</h2>
-				<p>Thank you for joining us on this journey. We look forward to creating valuable content that helps you grow as a developer and stay current with the latest technologies.</p>
+
+
+    <div class="max-w-4xl mx-auto bg-primary-950 p-8 rounded-lg shadow-lg">
+        <h2 class="text-xl font-bold mb-4 text-primary-900">El internet y la distribución del valor</h2>
+
+        <p class="text-sm leading-relaxed text-primary-300 mb-6">El internet es una innovación capitalista.</p>
+        <p class="text-sm leading-relaxed text-primary-300 mb-6">Esta innovación prometía descentralización y acceso, pero entregó exactamente lo opuesto.</p>
+        <p class="text-sm leading-relaxed text-primary-300 mb-6">En lugar de democratizar el conocimiento, creó muros de pago y algoritmos que priorizan rentabilidad sobre verdad.</p>
+        <p class="text-sm leading-relaxed text-primary-300 mb-6">En lugar de descentralizar el poder, consolidó monopolios sin precedentes: Amazon, Google y Microsoft controlan sus mercados y la infraestructura digital global. Después hablaremos de la nube.</p>
+        <p class="text-sm leading-relaxed text-primary-300 mb-6">En lugar de liberar el trabajo, lo precarizó sistemáticamente. La "economía gig" transfiere riesgos y costos empresariales a trabajadores sin seguridad social: Uber extrae valor mientras los conductores pagan el coche, la gasolina, el mantenimiento y el seguro.</p>
+        <p class="text-sm leading-relaxed text-primary-300 mb-6">En lugar de crear comunidad, las redes sociales se volvieron máquinas de polarización que monetizan la división social.</p>
+        <p class="text-sm leading-relaxed text-primary-300 mb-6">El patrón es claro: cada promesa emancipadora del internet se invirtió en su opuesto porque opera bajo la lógica capitalista de maximizar beneficios privados. Las herramientas digitales tienen potencial transformador real, pero su subordinación al capital las convierte en instrumentos de dominación.</p>
+<p class="text-sm leading-relaxed text-primary-300 mb-6">
+    ¿La solución? Cambiar la lógica del sistema. La capacidad productiva de la humanidad nunca ha sido tan alta; el problema no es de poder, sino de voluntad. Si dejamos de perseguir solo el beneficio privado y empezamos a trabajar por el bien común, podemos enfrentar la raíz de esta crisis.
+</p>
+
+<p class="text-sm leading-relaxed text-primary-300 mb-6">
+    Pero esto nos lleva a una pregunta inevitable: ¿qué es el beneficio social? ¿Y cómo lo medimos? No basta con decir “lo que la mayoría quiere”. Hay cosas que deseamos porque son valiosas, y otras que valoramos porque muchos las desean. Entender esta diferencia es clave.
+</p>
+
+<p class="text-sm leading-relaxed text-primary-300 mb-6">
+    El valor no está en las cosas por sí solas, ni solo en nuestros gustos. Surge de las relaciones que construimos juntos. Y aunque esas relaciones cambian, el valor que generan puede sostener proyectos, guiar decisiones y marcar rumbos colectivos.
+</p>
+
+<p class="text-sm leading-relaxed text-primary-300 mb-6">
+    Hoy, el valor se mide casi exclusivamente en dinero. Pero hay otras formas de valor que importan: el cuidado, la confianza, el tiempo compartido, la justicia. Recuperarlas es parte del desafío.
+</p>
+
+<p class="text-sm leading-relaxed text-primary-300 mb-6">
+    Necesitamos nuevas formas de producir, redistribuir y decidir. Cambios así no nacen en abstracto: se construyen con ejemplos concretos.
+</p>
+
+<p class="text-sm leading-relaxed text-primary-300 mb-6">
+    El desarrollo de software es un buen lugar para empezar. Se basa en colaboración, conocimiento y herramientas digitales que ya permiten experimentar con nuevos modelos de organización.
+</p>
+
+<p class="text-sm leading-relaxed text-primary-300">
+    Por eso estamos construyendo <span class="font-bold text-red-500 font-primary">Scythe</span>: un experimento práctico para distribuir el valor de forma más justa. Si lo logramos aquí, otros sectores podrán seguir.
+</p>
+
+    </div>
+
 			`,
 			author: 'Blog Team',
 			publishedAt: '2025-05-01T10:00:00Z',
