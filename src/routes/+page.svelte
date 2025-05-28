@@ -24,13 +24,13 @@
 </section>
 
 <!-- Sección separada de suscripción -->
-<section class="bg-red-950 text-white px-6 py-20 flex flex-col items-center text-right">
+<section class="bg-red-950 text-white px-6 py-20 flex flex-col items-center text-center">
   <div class="max-w-xl w-full">
     <h2 class="text-4xl md:text-5xl font-extrabold mb-4 leading-tight">
       ¿Quieres saber en qué termina todo esto?
     </h2>
     <p class="text-lg text-red-200 mb-10">
-      Suscríbete y recibe actualizaciones semanales del proyecto, ideas nuevas y avances antes que nadie.
+      Recibe novedades semanales del proyecto directamente en tu bandeja de entrada
     </p>
 
     <div class="flex flex-col sm:flex-row items-center gap-4">
