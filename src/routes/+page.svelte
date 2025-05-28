@@ -15,7 +15,7 @@
     <h1 class="text-4xl md:text-6xl font-extrabold mb-6 text-primary-50">¿Okey, pero qué es Scythe?</h1>
     <p class="mt-8 text-lg md:text-xl text-primary-300 mb-4">Trabajo compartido, valor distribuido.</p>
     <p class="text-lg md:text-xl text-primary-300 mb-8">
-      Scythe es una nueva forma de construir software. Una forma de desarrollar sin pedir permiso al capital.
+      Scythe es una nueva forma de construir software. Una forma de desarrollar sin pedirle permiso al capital.
     </p>
     <div class="mt-4">
       <a href="/blog" class="inline-block px-6 py-3 rounded-lg border border-primary-400 text-primary-300 hover:text-white hover:border-white hover:bg-primary-800 transition font-semibold">Explorar el blog →</a>
