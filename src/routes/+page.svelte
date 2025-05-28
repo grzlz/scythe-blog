@@ -18,21 +18,21 @@
       Scythe es una nueva forma de construir software. Una forma de desarrollar sin pedir permiso al capital.
     </p>
     <div class="mt-4">
-      <a
-        href="/blog"
-        class="inline-block px-6 py-3 rounded-lg border border-primary-400 text-primary-300 hover:text-white hover:border-white hover:bg-primary-800 transition font-semibold"
-      >
-        Explorar el blog →
-      </a>
+      <a href="/blog" class="inline-block px-6 py-3 rounded-lg border border-primary-400 text-primary-300 hover:text-white hover:border-white hover:bg-primary-800 transition font-semibold">Explorar el blog →</a>
     </div>
   </div>
 </section>
 
 <!-- Sección separada de suscripción -->
-<section class="bg-red-950 text-white px-6 py-16 flex flex-col items-center justify-center text-center">
+<section class="bg-red-950 text-white px-6 py-20 flex flex-col items-center text-right">
   <div class="max-w-xl w-full">
-    <h2 class="text-3xl md:text-4xl font-bold mb-4">Suscríbete al newsletter</h2>
-    <p class="text-lg text-red-200 mb-8">Recibe ideas, análisis y avances del proyecto directamente en tu bandeja de entrada.</p>
+    <h2 class="text-4xl md:text-5xl font-extrabold mb-4 leading-tight">
+      ¿Quieres saber en qué termina todo esto?
+    </h2>
+    <p class="text-lg text-red-200 mb-10">
+      Suscríbete y recibe actualizaciones semanales del proyecto, ideas nuevas y avances antes que nadie.
+    </p>
+
     <div class="flex flex-col sm:flex-row items-center gap-4">
       <input
         type="email"
@@ -42,7 +42,7 @@
       />
       <button
         onclick={subscribe}
-        class="px-6 py-3 rounded-lg bg-red-600 hover:bg-red-700 text-white font-bold transition"
+        class="px-6 py-3 rounded-lg bg-red-600 hover:bg-red-700 text-white font-bold transition w-full sm:w-auto"
       >
         Suscribirme
       </button>
