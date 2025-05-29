@@ -4,8 +4,8 @@ import { error } from '@sveltejs/kit';
 export function load({ params }) {
 	const posts = {
 		'hello-world': {
-			title: 'Hello world!',
-			subtitle: 'Welcome to our new blog - your gateway to amazing content',
+			title: 'El internet y el capital',
+			subtitle: '¿Cómo llegamos aquí?',
 			content: `
 
 

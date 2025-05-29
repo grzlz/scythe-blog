@@ -50,10 +50,10 @@
 </script>
 
 <div class="container">
-  <div class="grid-layout">
+  <div class="grid-layout bg-p">
     {#each itemsWithState as item, i (item.slug)}
       <div 
-        class="card"
+        class="card bg-gray-900"
         class:col-span-all={item.isSelected} 
         class:expanded-vertical={item.isExpanded}
         onclick={() => handleCardClick(i)} 
@@ -82,10 +82,6 @@
                 {item.readTime}
               </span>
             {/if}
-          </div>
-          
-          <div class="text-xs text-gray-500 dark:text-gray-400 mb-2">
-            {formatDate(item.date)} • {item.author}
           </div>
           
           <p class="text-gray-700 dark:text-gray-300 excerpt" class:expanded={item.isExpanded}>{item.excerpt}</p>
@@ -140,7 +136,6 @@
   }
 
   .card {
-    background: white;
     border-radius: 0.5rem;
     box-shadow: 0 2px 4px rgba(0,0,0,0.08);
     transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
