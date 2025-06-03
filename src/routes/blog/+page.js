@@ -6,8 +6,7 @@ export function load() {
 				slug: 'short-post',
 				title: 'El internet y el capital.',
 				excerpt: '¿Cómo llegamos aquí?',
-				content: `
-				<p>El internet es una innovación capitalista.</p>
+				content: `<p>El internet es una innovación capitalista.</p>
 				<p>Prometía descentralización y acceso, pero entregó exactamente lo opuesto.</p>
 				<p>En lugar de democratizar el conocimiento, creó muros de pago y algoritmos que priorizan el engagement —eufemismo para potencial adictivo, digámoslo ya de una vez— por encima de la utilidad o incluso la veracidad del contenido que viralizan.</p>
 				<p>En lugar de descentralizar el poder, consolidó monopolios sin precedentes: Amazon, Google y Microsoft no solo dominan sus mercados, sino que controlan también la infraestructura digital global. Después hablaremos de la nube, pero por ahora basta con recordar estos nombres: AWS, GCP, Azure.</p><p>En lugar de liberar el trabajo, lo precarizó sistemáticamente. La "gig economy" transfiere los riesgos y los costos estructurales desde las empresas hacia trabajadores sin seguridad social.</p>

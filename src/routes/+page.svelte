@@ -10,13 +10,11 @@
 </script>
 
 <!-- Sección principal de Scythe -->
-<section class="min-h-screen bg-primary-950 text-primary-100 flex flex-col items-center justify-center px-6 py-16">
+<section class="min-h-full bg-primary-950 text-primary-100 flex flex-col items-center justify-center px-6 py-16">
   <div class="max-w-4xl text-left mb-auto">
-    <h1 class="text-4xl md:text-6xl font-extrabold mb-6 text-primary-50">¿Okey, pero qué es Scythe?</h1>
-    <p class="mt-8 text-lg md:text-xl text-primary-300 mb-4">Trabajo compartido, valor distribuido.</p>
-    <p class="text-lg md:text-xl text-primary-300 mb-8">
-      Scythe es una nueva forma de construir software. Una forma de desarrollar sin pedirle permiso al capital.
-    </p>
+    <h1 class="text-5xl md:text-6xl font-extrabold mb-2 text-primary-50">Okey pero,</h1>
+    <div class="text-5xl md:text-6xl font-extrabold mb-8 text-primary-50">¿qué es Scythe?</div>
+    <p class="text-lg md:text-xl text-primary-300 my-8 mb-8">Scythe es una nueva forma de desarrollar software sin pedirle permiso al capital.</p>
     <div class="mt-4">
       <a href="/blog" class="inline-block px-6 py-3 rounded-lg border border-primary-400 text-primary-300 hover:text-white hover:border-white hover:bg-primary-800 transition font-semibold">Explorar el blog →</a>
     </div>
