@@ -12,9 +12,9 @@
 <!-- Sección principal de Scythe -->
 <section class="min-h-screen bg-secondary-50 text-secondary-800 flex flex-col items-center justify-center px-6 py-16">
   <div class="max-w-4xl text-left mb-auto">
-    <h1 class="text-4xl md:text-6xl font-extrabold mb-2 ">Okey, pero,</h1>
+    <h1 class="text-4xl md:text-6xl font-extrabold mb-2 ">Okey pero</h1>
     <div class="text-4xl md:text-6xl font-extrabold mb-8">¿qué es <span class="text-red-600">Scythe</span>?</div>
-    <p class="text-lg md:text-xl text-secondary-700 my-8 mb-8">Es un experimento de economía política.</p>
+    <p class="text-lg md:text-xl text-secondary-700 my-8 mb-8">Es una forma de desarrollar software sin depender del capital.</p>
     <p class="text-lg md:text-xl text-secondary-700 my-8 mb-8">Entra al blog para saber más.</p>
     <div class="mt-4">
       <a href="/blog" class="inline-block px-6 py-3 rounded-lg border border-secondary-800 text-secondary-900 hover:text-white hover:border-white hover:bg-secondary-800 transition font-semibold">Explorar →</a>
