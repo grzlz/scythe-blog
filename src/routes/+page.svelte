@@ -14,8 +14,8 @@
   <div class="max-w-4xl text-left mb-auto">
     <h1 class="text-4xl md:text-6xl font-extrabold mb-2 ">Okey, pero,</h1>
     <div class="text-4xl md:text-6xl font-extrabold mb-8">¿qué es <span class="text-red-600">Scythe</span>?</div>
-    <p class="text-lg md:text-xl text-secondary-700 my-8 mb-8">Es un protocolo digital que mejora la coordinación entre la economía y el gobierno de un sistema.</p>
-    <p class="text-lg md:text-xl text-secondary-700 my-8 mb-8">Entra a nuestro blog para saber más.</p>
+    <p class="text-lg md:text-xl text-secondary-700 my-8 mb-8">Es un experimento de economía política.</p>
+    <p class="text-lg md:text-xl text-secondary-700 my-8 mb-8">Entra al blog para saber más.</p>
     <div class="mt-4">
       <a href="/blog" class="inline-block px-6 py-3 rounded-lg border border-secondary-800 text-secondary-900 hover:text-white hover:border-white hover:bg-secondary-800 transition font-semibold">Explorar →</a>
     </div>
