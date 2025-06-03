@@ -41,7 +41,7 @@
   }
 
   function formatDate(dateString) {
-    return new Date(dateString).toLocaleDateString('en-US', {
+    return new Date(dateString).toLocaleDateString('en-US', { 
       year: 'numeric',
       month: 'long',
       day: 'numeric'
@@ -49,7 +49,15 @@
   }
 </script>
 
-<div class="container">
+<div class="bg-primary-50 p-6 rounded-2xl shadow-md max-w-xl mx-auto mt-10">
+  <h1 class="text-3xl font-bold text-primary-900 mb-2">Bienvenida</h1>
+  <h3 class="text-xl font-semibold text-primary-700 mb-4">Gracias por estar aquí</h3>
+  <p class="text-base text-primary-600 mb-4">Este blog es el primer paso en un camino que todavía está por descubrirse.</p>
+  <p class="text-base text-primary-600">Esta es una invitación para explorar las posibilidades de construir un mundo en el que los beneficios que produce la tecnología estén mejor distribuidos.</p>
+  <p class="text-base text-primary-600">El nivel de desigualdad del mundo es extremadamente alto y </p>  
+</div>
+
+<div class="container">≈
   <div class="grid-layout bg-p">
     {#each itemsWithState as item, i (item.slug)}
       <div 
