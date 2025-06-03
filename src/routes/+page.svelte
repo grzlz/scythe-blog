@@ -15,8 +15,9 @@
     <h1 class="text-4xl md:text-6xl font-extrabold mb-2 text-primary-50">Okey pero,</h1>
     <div class="text-4xl md:text-6xl font-extrabold mb-8 text-primary-50">¿qué es Scythe?</div>
     <p class="text-lg md:text-xl text-primary-300 my-8 mb-8">Scythe es una forma de desarrollar software sin pedirle permiso al capital.</p>
+    <p class="text-lg md:text-xl text-primary-300 my-8 mb-8">Entra a nuestro blog si quieres saber más.</p>
     <div class="mt-4">
-      <a href="/blog" class="inline-block px-6 py-3 rounded-lg border border-primary-400 text-primary-300 hover:text-white hover:border-white hover:bg-primary-800 transition font-semibold">Explorar el blog →</a>
+      <a href="/blog" class="inline-block px-6 py-3 rounded-lg border border-primary-400 text-primary-300 hover:text-white hover:border-white hover:bg-primary-800 transition font-semibold">Explorar →</a>
     </div>
   </div>
 </section>
