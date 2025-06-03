@@ -10,14 +10,14 @@
 </script>
 
 <!-- Sección principal de Scythe -->
-<section class="min-h-screen bg-primary-950 text-primary-100 flex flex-col items-center justify-center px-6 py-16">
+<section class="min-h-screen bg-secondary-50 text-secondary-800 flex flex-col items-center justify-center px-6 py-16">
   <div class="max-w-4xl text-left mb-auto">
-    <h1 class="text-4xl md:text-6xl font-extrabold mb-2 text-primary-50">Okey pero,</h1>
-    <div class="text-4xl md:text-6xl font-extrabold mb-8 text-primary-50">¿qué es Scythe?</div>
-    <p class="text-lg md:text-xl text-primary-300 my-8 mb-8">Scythe es una forma de desarrollar software sin pedirle permiso al capital.</p>
-    <p class="text-lg md:text-xl text-primary-300 my-8 mb-8">Entra a nuestro blog si quieres saber más.</p>
+    <h1 class="text-4xl md:text-6xl font-extrabold mb-2 ">Okey pero,</h1>
+    <div class="text-4xl md:text-6xl font-extrabold mb-8">¿qué es <span class="text-red-600">Scythe?</span></div>
+    <p class="text-lg md:text-xl text-secondary-600 my-8 mb-8">Es un reality show as a service.</p>
+    <p class="text-lg md:text-xl text-secondary-600 my-8 mb-8">Entra a nuestro blog si quieres saber más.</p>
     <div class="mt-4">
-      <a href="/blog" class="inline-block px-6 py-3 rounded-lg border border-primary-400 text-primary-300 hover:text-white hover:border-white hover:bg-primary-800 transition font-semibold">Explorar →</a>
+      <a href="/blog" class="inline-block px-6 py-3 rounded-lg border border-secondary-600 text-secondary-500 hover:text-white hover:border-white hover:bg-secondary-800 transition font-semibold">Explorar →</a>
     </div>
   </div>
 </section>
@@ -37,7 +37,7 @@
         type="email"
         bind:value={email}
         placeholder="Tu correo electrónico"
-        class="w-full px-4 py-3 rounded-lg text-primary-950 placeholder-red-400 focus:outline-none focus:ring-2 focus:ring-red-500"
+        class="w-full px-4 py-3 rounded-lg bg-red-50 text-primary-950 placeholder-red-400 focus:outline-none focus:ring-2 focus:ring-red-500"
       />
       <button
         onclick={subscribe}
