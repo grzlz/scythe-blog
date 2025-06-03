@@ -12,7 +12,7 @@
 <!-- Sección principal de Scythe -->
 <section class="min-h-screen bg-secondary-50 text-secondary-800 flex flex-col items-center justify-center px-6 py-16">
   <div class="max-w-4xl text-left mb-auto">
-    <h1 class="text-4xl md:text-6xl font-extrabold mb-2 ">Okey,</h1>
+    <h1 class="text-4xl md:text-6xl font-extrabold mb-2 ">Está bien,</h1>
     <div class="text-4xl md:text-6xl font-extrabold mb-8">¿qué es <span class="text-red-600">Scythe</span>?</div>
     <p class="text-lg md:text-xl text-secondary-700 my-8 mb-8">Es un protocolo que mejora la coordinación entre la economía y el gobierno de un sistema.</p>
     <p class="text-lg md:text-xl text-secondary-700 my-8 mb-8">Entra al blog para saber más.</p>
