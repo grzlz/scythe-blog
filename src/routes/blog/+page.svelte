@@ -1,17 +1,14 @@
 <script>
   import { onMount } from 'svelte';
-  import { fade, fly, slide } from 'svelte/transition';
-  import { quintOut, cubicOut, elasticOut } from 'svelte/easing';
-  import { flip } from 'svelte/animate';
+  import Newspaper from '$lib/components/Newspaper.svelte';
 
   let { data } = $props();
   let items = $state(data.posts);
-
   let active = $state({ index: null, level: 0 });
   let mounted = $state(false);
   let windowWidth = $state(0);
 
-  // Properly used $derived for calculated item states
+  // Derived state for items with their active states
   let itemsWithState = $derived(items.map((item, i) => ({
     ...item,
     isActive: active.index === i,
@@ -21,9 +18,8 @@
 
   onMount(() => {
     mounted = true;
-    
-    // Track window width for responsive behavior
     windowWidth = window.innerWidth;
+    
     const handleResize = () => windowWidth = window.innerWidth;
     window.addEventListener('resize', handleResize);
     
@@ -40,6 +36,7 @@
     }
   }
 
+
   function formatDate(dateString) {
     return new Date(dateString).toLocaleDateString('en-US', { 
       year: 'numeric',
@@ -50,99 +47,31 @@
 </script>
 
 <div class="bg-primary-950 p-8 shadow-md min-w-full  text-justify">
-  <h1 class="text-3xl font-bold text-red-600">Bienvenida</h1>
-  <p class=" text-gray-500 mb-4">Tiempo de lectura 1 minuto</p>
+  <h1 class="text-3xl font-bold text-primary-400">Bienvenida</h1>
+  <p class=" text-gray-500 mb-4">Tiempo de lectura: 1 minuto</p>
 
-  <h3 class="text-xl font-semibold text-primary-400 mb-4">Gracias por estar aquí</h3>
+  <h3 class="text-xl font-semibold text-primary-100 mb-4">Gracias por estar aquí</h3>
   <div class="text-primary-200">
     <p class="mb-4">Este blog es el primer paso en un camino que, como dice el poeta, se hace al andar.</p>
     <p class="mb-4">Es una invitación para imaginar la posibilidad de un mundo en el que los beneficios que produce la tecnología estén mejor distribuidos. ¿Por qué? Porque el nivel de riqueza y desigualdad de nuestra sociedad actual no tiene precedentes en la historia de la humanidad. Sólo un dato: el 10% de la población más rica del mundo controla el 76% de la riqueza total de nuestro planeta.</p>
-    <p class="mb-2">Este 76% es nuestro nuevo punto de partida. Y como si fuera poco, la inteligencia artificial y la automatización prometen revolucionar cada industria, cada trabajo y cada aspecto de nuestras vidas. Parece razonable pensar que de conservar las reglas actuales del juego, esta revolución tecnológica sólo profundizará la desigualdad existente.</p>
-    <p class="mb-4">Supongamos que la automatización total es posible, ¿qué ocurrirá cuando el trabajo humano deje de ser necesario? ¿Quién se beneficiará de esa productividad masiva? ¿Sólo quienes poseen el capital?</p>
+    <p class="mb-2">Este 76% es nuestro nuevo punto de partida porque la inteligencia artificial y la automatización pretenden transformar cada industria, cada trabajo y cada aspecto de nuestras vidas. Parece razonable pensar que de conservar las reglas actuales del juego, esta revolución tecnológica sólo profundizará la desigualdad existente.</p>
+    <p class="mb-4">Si la automatización continúa expandiéndose significativamente, ¿qué ocurrirá cuando el trabajo humano deje de ser necesario? ¿Quién se beneficiará de esa productividad masiva? ¿Sólo quienes poseen el capital?</p>
     <p class="mb-4">Con el arreglo institucional actual, la respuesta es sí.</p>
     <p class="mb-2">¿Qué podemos hacer al respecto?</p>
-    
-    
-    <p>Por el momento, dos cosas:</p>
-    <ol class="list-decimal pl-6 mb-4">
-      <li>Reconocer que la desigualdad es una decisión política;</li>
-      <li>Construir software.</li>
-    </ol>
-    <p>lo que podemos hacer es software; pero de una manera diferente. Esta es nuestra bitácora de desarrollo. Un espacio para tener una conversación abierta tú y yo, porque necesitamos que te involucres. Aquí documentaremos avances, ideas y preguntas mientras imaginamos y construimos una alternativa.</p>
-    
+    <p class="mb-4">Si el problema es sistémico, la solución tiene que ser sistémica. Entonces lo que podemos hacer es diseñar y construir otro sistema.</p>
+    <p>Esta es nuestra bitácora de desarrollo para ese otro sistema. Un espacio para tener una conversación abierta tú y yo, porque necesitamos tus ideas, tus dudas y tus críticas. Aquí documentaremos avances, ideas y preguntas mientras imaginamos y construimos una alternativa.</p>
   </div>
     
   
 </div>
 
-<div class="container mx-auto mt-10">
-  <div class="grid-layout bg-p">
-    {#each itemsWithState as item, i (item.slug)}
-      <div 
-        class="card bg-gray-900"
-        class:col-span-all={item.isSelected} 
-        class:expanded-vertical={item.isExpanded}
-        onclick={() => handleCardClick(i)} 
-        animate:flip={{ duration: 700, easing: cubicOut, delay: item.isSelected ? 0 : 30 }}>
-        
-        {#if item.image}
-          <div class="card-image" style="height: {item.isActive ? '280px' : '180px'};">
-            <img 
-              src={item.image} 
-              alt={item.title} 
-              class="image" 
-              style="transform: scale({item.isActive ? 1.05 : 1}); 
-                     transition: transform 800ms {cubicOut}"
-            />
-          </div>
-        {/if}
-        
-        <div class="card-content">
-          <div class="flex justify-between items-start mb-2">
-            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{item.title}</h3>
-            {#if mounted && !item.isExpanded}
-              <span 
-                class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded dark:bg-blue-900 dark:text-blue-300"
-                in:fade={{ duration: 300, delay: 200 }}
-                out:fade={{ duration: 250 }}>
-                {item.readTime}
-              </span>
-            {/if}
-          </div>
-          
-          <p class="text-gray-700 dark:text-gray-300 excerpt" class:expanded={item.isExpanded}>{item.excerpt}</p>
-          
-          {#if item.tags?.length}
-            <div class="mt-3 flex flex-wrap gap-1">
-              {#each item.tags as tag}
-                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded dark:bg-gray-700 dark:text-gray-300">
-                  #{tag}
-                </span>
-              {/each}
-            </div>
-          {/if}
-
-          {#if item.isExpanded && mounted}
-            <div class="mt-4" 
-                 in:slide={{ duration: 600, delay: 150, easing: quintOut }}
-                 out:slide={{ duration: 400, easing: cubicOut }}>
-              <hr class="my-3 border-gray-200 dark:border-gray-700" />
-              <div class="prose prose-sm dark:prose-invert max-w-none">
-                <p class="text-gray-600 dark:text-gray-300">{@html item.content}</p>
-              </div>
-              <div class="mt-4">
-                <span class="text-sm bg-gray-200 text-gray-700 px-3 py-1 rounded-full dark:bg-gray-700 dark:text-gray-300"
-                      in:fade={{ duration: 500, delay: 300 }}>
-                  {item.category}
-                </span>
-              </div>
-            </div>
-          {/if}
-        </div>
-      </div>
-    {/each}
-  </div>
-</div>
+<Newspaper 
+  {itemsWithState}
+  {mounted}
+  {handleCardClick}
+  {formatDate}
+  {windowWidth}
+/>
 
 <style>
   .grid-layout {

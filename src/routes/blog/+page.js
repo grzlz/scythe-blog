@@ -4,7 +4,7 @@ export function load() {
 		posts: [
 			{
 				slug: 'short-post',
-				title: 'El internet y el capital.',
+				title: 'El internet y el capital',
 				excerpt: '¿Cómo llegamos aquí?',
 				content: `<p>El internet es una innovación capitalista.</p>
 				<p>Prometía descentralización y acceso, pero entregó exactamente lo opuesto.</p>
@@ -21,40 +21,40 @@ export function load() {
 				`
 			},
 			{
-				slug: 'medium-insight',
-				title: 'Some Insight',
-				excerpt: 'A few paragraphs of insight.',
-				content: `
-					<p>This post explores a topic with moderate depth.</p>
-					<p>It has a few paragraphs, but doesn't drag on.</p>
-					<p>Perfect for a coffee break read.</p>
-				`
+			slug: 'medium-insight',
+			title: 'Attentions as a commodity',
+			excerpt: 'Exploring how attention has become a valuable resource in the digital age.',
+			content: `
+				<p>In today’s digital economy, attention has transformed into one of the most valuable commodities.</p>
+				<p>Platforms and advertisers fiercely compete for the scarce resource of user attention, monetizing every second.</p>
+				<p>This article provides insights into the dynamics of attention economics, perfect for reflecting during your coffee break.</p>
+			`
 			},
 			{
-				slug: 'long-essay',
-				title: 'Deep Dive into Web Performance',
-				excerpt: 'A comprehensive look at optimizing performance.',
-				content: `
-					<p>When building modern web apps, performance matters.</p>
-					<p>We’ll look into TTFB, LCP, CLS, and other web vitals.</p>
-					<p>Techniques include prefetching, lazy loading, tree-shaking, and optimizing asset delivery through CDNs.</p>
-					<p>Understanding how browsers parse and render HTML helps in structuring pages efficiently.</p>
-					<p>Another key area is JavaScript — keeping bundles small and scoped helps performance significantly.</p>
-					<p>Image optimization, adaptive loading strategies, and measuring through tools like Lighthouse and WebPageTest are vital.</p>
-					<p>This article aims to be a complete reference for performance-minded developers.</p>
-				`
+			slug: 'long-essay',
+			title: 'La maldición de Goodhart',
+			excerpt: 'Cómo las métricas pueden pervertir los objetivos que buscan optimizar.',
+			content: `
+				<p>La ley de Goodhart afirma que cuando una métrica se convierte en objetivo, deja de ser una buena métrica.</p>
+				<p>Este ensayo explora cómo este fenómeno impacta en áreas desde la gestión empresarial hasta las políticas públicas.</p>
+				<p>Se analizarán ejemplos concretos en educación, salud, y tecnología, mostrando cómo optimizar una métrica puede generar consecuencias no deseadas.</p>
+				<p>La comprensión profunda de este concepto es esencial para establecer objetivos y métricas que verdaderamente reflejen el éxito deseado.</p>
+				<p>Este artículo ofrece recomendaciones para evitar la maldición de Goodhart en tu organización.</p>
+			`
 			},
 			{
-				slug: 'gallery-showcase',
-				title: 'Photo Showcase',
-				excerpt: 'A visual-heavy post with lots of images.',
-				content: `
-					<img src="https://source.unsplash.com/random/300x200?1" alt="random" />
-					<img src="https://source.unsplash.com/random/300x300?2" alt="random" />
-					<img src="https://source.unsplash.com/random/300x250?3" alt="random" />
-					<img src="https://source.unsplash.com/random/300x400?4" alt="random" />
-				`
+			slug: 'gallery-showcase',
+			title: '¿Qué proponemos realmente?',
+			excerpt: 'Bueno, pero ¿qué es Scythe?',
+			content: `
+				<p>Esta colección visual expresa claramente qué valores promovemos y cómo imaginamos un futuro diferente.</p>
+				<img src="https://source.unsplash.com/random/300x200?innovation" alt="Innovación" />
+				<img src="https://source.unsplash.com/random/300x300?community" alt="Comunidad" />
+				<img src="https://source.unsplash.com/random/300x250?sustainability" alt="Sostenibilidad" />
+				<img src="https://source.unsplash.com/random/300x400?future" alt="Futuro" />
+			`
 			}
+
 		]
 	};
 }
