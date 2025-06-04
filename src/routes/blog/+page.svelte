@@ -83,7 +83,7 @@
         class="w-full px-4 py-3 rounded-lg bg-red-50 text-primary-950 placeholder-red-400 focus:outline-none focus:ring-2 focus:ring-red-500"
       />
       <button
-        onclick={subscribe}
+
         class="px-6 py-3 rounded-lg bg-red-600 hover:bg-red-700 text-white font-bold transition w-full sm:w-auto"
       >
         Suscribirme
@@ -92,83 +92,3 @@
   </div>
 </section>
 
-
-<style>
-  .grid-layout {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Default to 2 columns */
-    gap: 1.5rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1rem;
-  }
-
-  /* Only switch to 3 columns on extra large screens */
-  @media (min-width: 1280px) {
-    .grid-layout {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-
-  .card {
-    border-radius: 0.5rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
-    transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-    cursor: pointer;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    will-change: transform, box-shadow;
-  }
-
-  .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.12);
-  }
-
-  .col-span-all {
-    grid-column: 1 / -1;
-    max-width: 900px;
-    margin: 0 auto;
-    width: 100%;
-  }
-
-  .expanded-vertical {
-    z-index: 10;
-    transform: scale(1.02);
-    box-shadow: 0 12px 28px -5px rgba(0, 0, 0, 0.12),
-                0 10px 16px -6px rgba(0, 0, 0, 0.1);
-  }
-
-  .card-image {
-    width: 100%;
-    transition: height 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-    overflow: hidden;
-  }
-
-  .image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: transform;
-  }
-
-  .card-content {
-    padding: 1.25rem;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-  }
-  
-  .excerpt {
-    transition: max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
-    max-height: 4.5rem;
-    overflow: hidden;
-  }
-  
-  .excerpt.expanded {
-    max-height: none;
-    opacity: 0.9;
-  }
-</style>
