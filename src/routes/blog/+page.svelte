@@ -52,9 +52,24 @@
 <div class="bg-primary-50 p-6 rounded-2xl shadow-md max-w-xl mx-auto mt-10">
   <h1 class="text-3xl font-bold text-primary-900 mb-2">Bienvenida</h1>
   <h3 class="text-xl font-semibold text-primary-700 mb-4">Gracias por estar aquí</h3>
-  <p class="text-base text-primary-600 mb-4">Este blog es el primer paso en un camino que todavía está por descubrirse.</p>
-  <p class="text-base text-primary-600">Esta es una invitación para explorar las posibilidades de construir un mundo en el que los beneficios que produce la tecnología estén mejor distribuidos.</p>
-  <p class="text-base text-primary-600">El nivel de desigualdad del mundo es extremadamente alto y </p>  
+  <p class="text-base text-primary-600 mb-4">Este blog es el primer paso en un camino que, como dice el poeta, se hace al andar.</p>
+  <p class="text-base text-primary-600 mb-4">Es una invitación para imaginar la posibilidad de un mundo en el que los beneficios que produce la tecnología estén mejor distribuidos. ¿Por qué? Porque el nivel de riqueza y desigualdad de nuestra sociedad actual no tiene precedentes en la historia de la humanidad. Sólo un dato: el 10% de la población más rica del mundo controla el 76% de la riqueza total de nuestro planeta.</p>
+
+
+  <p class="text-base text-primary-600 mb-4">Este 76% es nuestro nuevo punto de partida. Y como si esto no fuera suficiente, la inteligencia artificial y la automatización prometen revolucionar cada industria, cada trabajo y cada aspecto de nuestras vidas. Parece razonable pensar que de conservar las reglas actuales del juego, esta revolución tecnológica solo profundizará la desigualdad existente.</p>
+
+  <p class="text-base text-primary-600 mb-4">
+    Supongamos que la automatización total es posible, ¿qué ocurrirá cuando el trabajo humano deje de ser necesario? ¿Quién se beneficiará de esa productividad masiva? ¿Sólo quienes poseen el capital?
+  </p>
+  <p class="text-base text-primary-600 mb-4">No. Porque la IA se entrenó con contenido que tú escribiste y con código que yo programé.</p>
+  <p class="text-base text-primary-600 mb-4">La tecnología, y en particular la IA, es un producto colectivo construido sobre el trabajo no remunerado de millones. Privatizar sus beneficios no es solo injusto: es un robo a escala planetaria.</p>
+  <p class="text-base text-primary-600 mb-4">¿Qué podemos hacer al respecto?</p>
+
+
+<p class="text-base text-primary-600">Por el momento, lo que podemos hacer es software; pero de una manera diferente. Esta es nuestra bitácora de desarrollo. Un espacio para tener una conversación abierta tú y yo, porque necesitamos que te involucres. Aquí documentaremos avances, ideas y preguntas mientras imaginamos y construimos una alternativa.</p>
+
+
+  
 </div>
 
 <div class="container">≈
