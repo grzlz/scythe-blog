@@ -50,7 +50,7 @@
 </script>
 
 <div class="bg-primary-950 p-8 shadow-md min-w-full  text-justify">
-  <h1 class="text-3xl font-bold text-red-100">Bienvenida</h1>
+  <h1 class="text-3xl font-bold text-red-600">Bienvenida</h1>
   <p class=" text-gray-500 mb-4">Tiempo de lectura 1 minuto</p>
 
   <h3 class="text-xl font-semibold text-primary-400 mb-4">Gracias por estar aquí</h3>
