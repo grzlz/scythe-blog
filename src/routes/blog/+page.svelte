@@ -48,7 +48,7 @@
 </script>
 
 <section>
-  <div class="bg-primary-950 p-8 shadow-md min-w-full  text-justify">
+  <div class="bg-primary-950 p-8 shadow-md min-w-full  text-justify font-secondary">
     <h1 class="text-3xl font-bold text-primary-400">Bienvenida</h1>
     <p class=" text-gray-500 mb-4">Tiempo de lectura: 1 minuto</p>
     <h3 class="text-xl font-semibold text-primary-100 mb-4">Gracias por estar aquí</h3>
@@ -59,8 +59,8 @@
       <p class="mb-4">Si la automatización continúa expandiéndose significativamente, ¿qué ocurrirá cuando el trabajo humano deje de ser necesario? ¿Quién se beneficiará de esa productividad masiva? ¿Sólo quienes poseen el capital?</p>
       <p class="mb-4">Con el arreglo institucional actual, la respuesta es sí.</p>
       <p class="mb-2">¿Qué podemos hacer al respecto?</p>
-      <p class="mb-4">Si el problema es sistémico, la solución tiene que ser sistémica. Entonces lo que podemos hacer es diseñar y construir otro sistema.</p>
-      <p>Este espacio es nuestra bitácora de desarrollo para ese otro sistema. Construimos esto para tener una conversación abierta contigo, porque necesitamos tus ideas, tus dudas y tus críticas. Aquí documentaremos avances, ideas y preguntas mientras imaginamos y construimos una alternativa.</p>
+      <p class="mb-4">Si el problema es sistémico, la solución tiene que ser sistémica. Entonces lo que podemos hacer es pensar, diseñar y construir otro sistema.</p>
+      <p>Este espacio es nuestra bitácora de desarrollo para ese otro sistema. El propósito de este blog es tener una conversación abierta contigo porque necesitamos tus ideas, tus dudas y tus críticas. Aquí documentaremos nuestros intentos por construir una alternativa.</p>
     </div>
   </div>
 </section>
@@ -72,26 +72,16 @@
 
 
 
-<section class="bg-red-950 text-white px-6 py-20 flex flex-col items-center text-center">
+<section class="font-primary bg-secondary-950 text-primary-100 px-6 py-20 flex flex-col items-center text-center">
   <div class="max-w-xl w-full">
     <h2 class="text-3xl md:text-5xl font-extrabold mb-4 leading-tight">
       ¿Quieres saber en qué termina todo esto?
     </h2>
-    <p class="text-lg text-red-200 mb-10 text-center">Recibe updates semanales en tu bandeja de  entrada</p>
+    <p class="text-lg text-primary-200 mb-10 text-center">Recibe updates semanales en tu bandeja de  entrada</p>
 
     <div class="flex flex-col sm:flex-row items-center gap-4">
-      <input
-        type="email"
-        bind:value={email}
-        placeholder="Tu correo electrónico"
-        class="w-full px-4 py-3 rounded-lg bg-red-50 text-primary-950 placeholder-red-400 focus:outline-none focus:ring-2 focus:ring-red-500"
-      />
-      <button
-
-        class="px-6 py-3 rounded-lg bg-red-600 hover:bg-red-700 text-white font-bold transition w-full sm:w-auto"
-      >
-        Suscribirme
-      </button>
+      <input type="email" bind:value={email} placeholder="Tu correo electrónico" class="w-full px-4 py-3 rounded-lg bg-blue-50 text-primary-950 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"/>
+      <button class="px-6 py-3 rounded-lg bg-blue-400 hover:bg-red-700 text-primary-50 font-bold transition w-full sm:w-auto">Suscribirme</button>
     </div>
   </div>
 </section>

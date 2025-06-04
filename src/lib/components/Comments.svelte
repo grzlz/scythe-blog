@@ -83,7 +83,7 @@
 </script>
 
 <!-- Sección de Comentarios -->
-<section class="bg-primary-500 p-8">
+<section class="bg-primary-700 p-8 font-primary">
   <div class="max-w-4xl mx-auto">
     <!-- Lista de comentarios -->
      <div class="shadow-md bg-primary-100 p-6 rounded-lg mb-5">
@@ -108,7 +108,7 @@
         {/if}
     </div>
  <!-- Formulario para nuevo comentario -->
-    <div class="bg-primary-950 p-6 rounded-lg mb-8 border border-primary-800">
+    <div class="bg-primary-950 p-6 rounded-lg mb-4 border border-primary-800">
       <h3 class="text-lg font-semibold text-primary-100 mb-4">Únete a la conversación</h3>
       <form onsubmit={enviarComentario}>
         <div class="mb-4">
@@ -120,7 +120,7 @@
             type="text"
             bind:value={nombre}
             placeholder="Tu nombre"
-            class="w-full px-3 py-2 bg-primary-800 border border-primary-700 rounded-md text-primary-100 placeholder-primary-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+            class="w-full px-3 py-2 border border-primary-700 rounded-md text-primary-100 placeholder-primary-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
             disabled={enviando}
           />
         </div>
@@ -132,9 +132,9 @@
           <textarea
             id="comentario"
             bind:value={comentario}
-            placeholder="Comparte tu opinión, pregunta o idea..."
+            placeholder="Comparte tu opinión, idea o sugerencia..."
             rows="4"
-            class="w-full px-3 py-2 bg-primary-800 border border-primary-700 rounded-md text-primary-100 placeholder-primary-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent resize-none"
+            class="w-full px-3 py-2 border border-primary-700 rounded-md text-primary-100 placeholder-primary-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent resize-none"
             disabled={enviando}
           ></textarea>
         </div>
@@ -142,9 +142,9 @@
         <button
           type="submit"
           disabled={enviando || !nombre.trim() || !comentario.trim()}
-          class="bg-primary-600 hover:bg-primary-700 disabled:bg-primary-800 disabled:cursor-not-allowed text-white font-medium py-2 px-6 rounded-md transition-colors duration-200"
+          class="border border-primary-700 hover:text-primary-50 hover:bg-primary-400 hover:cursor-pointer disabled:cursor-not-allowed text-primary-200 font-medium py-2 px-6 rounded-md transition-colors duration-200"
         >
-          {enviando ? 'Enviando...' : 'Publicar comentario'}
+          {enviando ? 'Enviando...' : 'Comentar'}
         </button>
       </form>
     </div>
