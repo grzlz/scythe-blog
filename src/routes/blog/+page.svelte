@@ -50,27 +50,25 @@
 </script>
 
 <div class="bg-primary-950 p-8 shadow-md min-w-full  text-justify">
-  <h1 class="text-3xl font-bold text-red-600">Bienvenida</h1>
+  <h1 class="text-3xl font-bold text-primary-400">Bienvenida</h1>
   <p class=" text-gray-500 mb-4">Tiempo de lectura 1 minuto</p>
 
-  <h3 class="text-xl font-semibold text-primary-400 mb-4">Gracias por estar aquí</h3>
-  <div class="text-primary-100">
-
+  <h3 class="text-xl font-semibold text-primary-300 mb-4">Gracias por estar aquí</h3>
+  <div class="text-primary-50">
     <p class="mb-4">Este blog es el primer paso en un camino que, como dice el poeta, se hace al andar.</p>
     <p class="mb-4">Es una invitación para imaginar la posibilidad de un mundo en el que los beneficios que produce la tecnología estén mejor distribuidos. ¿Por qué? Porque el nivel de riqueza y desigualdad de nuestra sociedad actual no tiene precedentes en la historia de la humanidad. Sólo un dato: el 10% de la población más rica del mundo controla el 76% de la riqueza total de nuestro planeta.</p>
-    
-    
     <p class="mb-2">Este 76% es nuestro nuevo punto de partida. Y como si fuera poco, la inteligencia artificial y la automatización prometen revolucionar cada industria, cada trabajo y cada aspecto de nuestras vidas. Parece razonable pensar que de conservar las reglas actuales del juego, esta revolución tecnológica sólo profundizará la desigualdad existente.</p>
-    
-    <p class="  ">
-      Supongamos que la automatización total es posible, ¿qué ocurrirá cuando el trabajo humano deje de ser necesario? ¿Quién se beneficiará de esa productividad masiva? ¿Sólo quienes poseen el capital?
-    </p>
-    <p class=" ">No. Porque la IA se entrenó con contenido que tú escribiste y con código que yo programé.</p>
-    <p class="  ">La tecnología, y en particular la IA, es un producto colectivo construido sobre el trabajo no remunerado de millones. Privatizar sus beneficios no es solo injusto: es un robo a escala planetaria.</p>
-    <p class="  ">¿Qué podemos hacer al respecto?</p>
+    <p class="mb-4">Supongamos que la automatización total es posible, ¿qué ocurrirá cuando el trabajo humano deje de ser necesario? ¿Quién se beneficiará de esa productividad masiva? ¿Sólo quienes poseen el capital?</p>
+    <p class="mb-4">Con el arreglo institucional actual, la respuesta es sí.</p>
+    <p class="mb-2">¿Qué podemos hacer al respecto?</p>
     
     
-    <p class=" ">Por el momento, lo que podemos hacer es software; pero de una manera diferente. Esta es nuestra bitácora de desarrollo. Un espacio para tener una conversación abierta tú y yo, porque necesitamos que te involucres. Aquí documentaremos avances, ideas y preguntas mientras imaginamos y construimos una alternativa.</p>
+    <p>Por el momento, dos cosas:</p>
+    <ol class="list-decimal pl-6 mb-4">
+      <li>Reconocer que la desigualdad es una decisión política;</li>
+      <li>Construir software.</li>
+    </ol>
+    <p>lo que podemos hacer es software; pero de una manera diferente. Esta es nuestra bitácora de desarrollo. Un espacio para tener una conversación abierta tú y yo, porque necesitamos que te involucres. Aquí documentaremos avances, ideas y preguntas mientras imaginamos y construimos una alternativa.</p>
     
   </div>
     
