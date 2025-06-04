@@ -1,7 +1,7 @@
 <script>
   import { onMount } from 'svelte';
-  import Newspaper from '$lib/components/Newspaper.svelte';
-
+  import Comments
+   from '$lib/components/Comments.svelte';
   let { data } = $props();
   let items = $state(data.posts);
   let active = $state({ index: null, level: 0 });
@@ -63,6 +63,10 @@
       <p>Este espacio es nuestra bitácora de desarrollo para ese otro sistema. Construimos esto para tener una conversación abierta contigo, porque necesitamos tus ideas, tus dudas y tus críticas. Aquí documentaremos avances, ideas y preguntas mientras imaginamos y construimos una alternativa.</p>
     </div>
   </div>
+</section>
+
+<section class="bg-gray-300">
+  <Comments />
 </section>
 
 
