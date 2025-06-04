@@ -85,30 +85,27 @@
 <!-- Sección de Comentarios -->
 <section class="bg-primary-500 p-8">
   <div class="max-w-4xl mx-auto">
-    <h2 class="text-2xl font-bold text-secondary-800 ml-1 mb-4">Comentarios ({comments.length})</h2>
-    
-   
     <!-- Lista de comentarios -->
-    <div class="shadow-md bg-primary-100 p-6 rounded-lg mb-5">
-
-      {#each comments as comentario (comentario.id)}
+     <div class="shadow-md bg-primary-100 p-6 rounded-lg mb-5">
+        <h2 class="text-2xl font-bold text-secondary-800 ml-1 mb-4">Comentarios ({comments.length})</h2>
+        
+        {#each comments as comentario (comentario.id)}
         <div class="bg-primary-50 p-6 rounded-lg border border-primary-200">
-          <div class="flex items-start justify-between mb-3">
-            <div>
-              <h4 class="font-semibold text-primary-900">{comentario.nombre}</h4>
-              <p class="text-sm text-primary-500">{formatearFecha(comentario.fecha)}</p>
+            <div class="flex items-start justify-between mb-3">
+                <div>
+                    <h4 class="font-semibold text-primary-900">{comentario.nombre}</h4>
+                    <p class="text-sm text-primary-500">{formatearFecha(comentario.fecha)}</p>
+                </div>
             </div>
-          </div>
-          <p class="text-gray-700 leading-relaxed">{comentario.comentario}</p>
+            <p class="text-gray-700 leading-relaxed">{comentario.comentario}</p>
         </div>
-      {/each}
-      
-      {#if comments.length === 0}
+        {/each}
+        {#if comments.length === 0}
         <div class="text-center py-12">
-          <p class="text-primary-400 text-lg">Aún no hay comentarios</p>
-          <p class="text-primary-500 mt-2">¡Sé el primero en compartir tu opinión!</p>
+            <p class="text-primary-400 text-lg">Aún no hay comentarios</p>
+            <p class="text-primary-500 mt-2">¡Sé el primero en compartir tu opinión!</p>
         </div>
-      {/if}
+        {/if}
     </div>
  <!-- Formulario para nuevo comentario -->
     <div class="bg-primary-950 p-6 rounded-lg mb-8 border border-primary-800">
