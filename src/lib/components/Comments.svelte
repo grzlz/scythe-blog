@@ -83,14 +83,39 @@
 </script>
 
 <!-- Sección de Comentarios -->
-<section class="bg-primary-900 p-8">
+<section class="bg-primary-400 p-8">
   <div class="max-w-4xl mx-auto">
-    <h2 class="text-2xl font-bold text-primary-400 mb-6">Comentarios ({comments.length})</h2>
+    <h2 class="text-2xl font-bold text-secondary-800 ml-1 mb-4">Comentarios ({comments.length})</h2>
     
-    <!-- Formulario para nuevo comentario -->
+   
+    <!-- Lista de comentarios -->
+    <div class="shadow-md bg-primary-100 p-6 rounded-lg mb-5">
+      {#if comments.length > 0}
+        <p class="text-primary-900 mb-4">Estos son los comentarios de la comunidad:</p>
+      {/if}
+      {#each comments as comentario (comentario.id)}
+        <div class="bg-primary-50 p-6 rounded-lg border border-primary-200">
+          <div class="flex items-start justify-between mb-3">
+            <div>
+              <h4 class="font-semibold text-primary-900">{comentario.nombre}</h4>
+              <p class="text-sm text-primary-500">{formatearFecha(comentario.fecha)}</p>
+            </div>
+          </div>
+          <p class="text-gray-700 leading-relaxed">{comentario.comentario}</p>
+        </div>
+      {/each}
+      
+      {#if comments.length === 0}
+        <div class="text-center py-12">
+          <p class="text-primary-400 text-lg">Aún no hay comentarios</p>
+          <p class="text-primary-500 mt-2">¡Sé el primero en compartir tu opinión!</p>
+        </div>
+      {/if}
+    </div>
+ <!-- Formulario para nuevo comentario -->
     <div class="bg-primary-950 p-6 rounded-lg mb-8 border border-primary-800">
       <h3 class="text-lg font-semibold text-primary-100 mb-4">Únete a la conversación</h3>
-      <form on:submit|preventDefault={enviarComentario}>
+      <form onsubmit={enviarComentario}>
         <div class="mb-4">
           <label for="nombre" class="block text-primary-200 text-sm font-medium mb-2">
             Nombre
@@ -129,26 +154,6 @@
       </form>
     </div>
     
-    <!-- Lista de comentarios -->
-    <div class="space-y-6">
-      {#each comments as comentario (comentario.id)}
-        <div class="bg-primary-950 p-6 rounded-lg border border-primary-800">
-          <div class="flex items-start justify-between mb-3">
-            <div>
-              <h4 class="font-semibold text-primary-100">{comentario.nombre}</h4>
-              <p class="text-sm text-primary-400">{formatearFecha(comentario.fecha)}</p>
-            </div>
-          </div>
-          <p class="text-primary-200 leading-relaxed">{comentario.comentario}</p>
-        </div>
-      {/each}
-      
-      {#if comments.length === 0}
-        <div class="text-center py-12">
-          <p class="text-primary-400 text-lg">Aún no hay comentarios</p>
-          <p class="text-primary-500 mt-2">¡Sé el primero en compartir tu opinión!</p>
-        </div>
-      {/if}
-    </div>
+    
   </div>
 </section>
