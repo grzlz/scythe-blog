@@ -83,16 +83,14 @@
 </script>
 
 <!-- Sección de Comentarios -->
-<section class="bg-primary-400 p-8">
+<section class="bg-primary-500 p-8">
   <div class="max-w-4xl mx-auto">
     <h2 class="text-2xl font-bold text-secondary-800 ml-1 mb-4">Comentarios ({comments.length})</h2>
     
    
     <!-- Lista de comentarios -->
     <div class="shadow-md bg-primary-100 p-6 rounded-lg mb-5">
-      {#if comments.length > 0}
-        <p class="text-primary-900 mb-4">Estos son los comentarios de la comunidad:</p>
-      {/if}
+
       {#each comments as comentario (comentario.id)}
         <div class="bg-primary-50 p-6 rounded-lg border border-primary-200">
           <div class="flex items-start justify-between mb-3">
