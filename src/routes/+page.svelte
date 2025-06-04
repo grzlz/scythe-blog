@@ -13,7 +13,7 @@
 <section class="min-h-screen bg-primary-950 text-primary-100 flex flex-col items-center justify-center px-6 py-16">
   <div class="max-w-4xl text-left mb-auto">
     <h1 class="text-4xl md:text-6xl font-extrabold mb-8">¿Qué es <span class="text-red-600">Scythe</span>?</h1>
-    <p class="text-lg md:text-xl text-primary-200 my-8 mb-8">Es una forma de desarrollar software sin depender capital.</p>
+    <p class="text-lg md:text-xl text-primary-200 my-8 mb-8">Es una forma de desarrollar software sin depender del capital.</p>
     <p class="text-lg md:text-xl text-primary-200 my-8 mb-8">Entra al blog para saber más.</p>
     <div class="mt-4">
       <a href="/blog" class="inline-block px-6 py-3 rounded-lg border border-primary-400 text-primary-300 hover:text-white hover:border-white hover:bg-primary-800 transition font-semibold">Explorar →</a>
