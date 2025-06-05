@@ -72,13 +72,7 @@
     <div class="text-primary-200 mb-8">
       <p class="mb-4">Este blog es el primer paso en un camino que, como dice el poeta, <a href="https://www.zendalibros.com/caminante-no-hay-camino-de-antonio-machado/" target="_blank" rel="noopener noreferrer"> <span class="hover:cursor-pointer hover:text-primary-400 transition-colors duration-200">se hace al andar.</span></a></p>
       <p class="mb-4">Es una invitación para imaginar la posibilidad de un mundo en el que los beneficios que produce la tecnología estén mejor distribuidos. ¿Por qué? Porque el nivel de riqueza y desigualdad de nuestra sociedad actual no tiene precedentes en la historia de la humanidad.</p>
-<p class="mb-4">
-  Sólo un dato: 
-  <span class="bg-gradient-to-r from-primary-300 to-primary-800 bg-clip-text text-transparent font-bold">
-    el 10% más rico controla el 76% de la riqueza total del planeta mientras que el 50% más pobre controla el 2%.
-  </span>
-  <sup><a href="#ref1" id="cite1" class="text-primary-700 hover:text-primary-300">1</a></sup>
-</p>
+      <p class="mb-4">Sólo un dato: <span class="bg-gradient-to-r from-primary-300 to-primary-800 bg-clip-text text-transparent">el 10% más rico controla el 76% de la riqueza total del planeta mientras que el 50% más pobre controla el 2%.</span><sup><a href="#ref1" id="cite1" class="text-primary-700 hover:text-primary-300">1</a></sup></p>  
 
 
       <p class="mb-2">Este 76% es nuestro nuevo punto de partida porque la inteligencia artificial y la automatización pretenden transformar cada industria, cada trabajo y cada aspecto de nuestras vidas. Parece razonable pensar que de conservar las reglas actuales del juego, esta revolución tecnológica sólo profundizará la desigualdad existente.</p>
@@ -136,7 +130,7 @@
 
     <div class="flex text-sm flex-col sm:flex-row items-center gap-4">
       <input type="email" bind:value={email} placeholder="Tu correo electrónico" class="w-full px-4 py-3 rounded-lg bg-blue-50 text-primary-950 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"/>
-      <button class="px-6 py-3 rounded-lg bg-blue-400 hover:bg-red-700 text-primary-50 font-bold transition w-full sm:w-auto">Suscribirme</button>
+      <button class="px-6 py-3 rounded-lg border border-primary-300 hover:bg-primary-600 text-primary-50 transition w-full sm:w-auto">Suscribirme</button>
     </div>
   </div>
 </section>
