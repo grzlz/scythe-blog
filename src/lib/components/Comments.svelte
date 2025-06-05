@@ -6,24 +6,6 @@
   
   // Array hardcodeado de comentarios para simular
   let comments = $state([
-    {
-      id: 1,
-      nombre: "María González",
-      comentario: "Excelente reflexión. Es crucial que empecemos a pensar en estos temas antes de que la automatización avance más.",
-      fecha: "2025-06-03T10:30:00Z"
-    },
-    {
-      id: 2,
-      nombre: "Carlos Ruiz",
-      comentario: "Me parece muy interesante la propuesta. ¿Tienen ya algunas ideas concretas sobre cómo podría funcionar ese 'otro sistema'?",
-      fecha: "2025-06-03T14:15:00Z"
-    },
-    {
-      id: 3,
-      nombre: "Ana López",
-      comentario: "La desigualdad es un problema real, pero ¿no creen que la tecnología también puede crear nuevas oportunidades de empleo?",
-      fecha: "2025-06-04T09:20:00Z"
-    }
   ]);
   
   // Estado del formulario
@@ -83,7 +65,7 @@
 </script>
 
 <!-- Sección de Comentarios -->
-<section class="bg-primary-700 p-8 font-primary">
+<section class="bg-primary-700 p-8 font-secondary text-sm">
   <div class="max-w-4xl mx-auto">
     <!-- Lista de comentarios -->
      <div class="shadow-md bg-primary-100 p-6 rounded-lg mb-5">
@@ -94,22 +76,22 @@
             <div class="flex items-start justify-between mb-3">
                 <div>
                     <h4 class="font-semibold text-primary-900">{comentario.nombre}</h4>
-                    <p class="text-sm text-primary-500">{formatearFecha(comentario.fecha)}</p>
+                    <p class="text-xs text-primary-500">{formatearFecha(comentario.fecha)}</p>
                 </div>
             </div>
-            <p class="text-gray-700 leading-relaxed">{comentario.comentario}</p>
+            <p class="text-gray-700">{comentario.comentario}</p>
         </div>
         {/each}
         {#if comments.length === 0}
         <div class="text-center py-12">
-            <p class="text-primary-400 text-lg">Aún no hay comentarios</p>
-            <p class="text-primary-500 mt-2">¡Sé el primero en compartir tu opinión!</p>
+            <p class="text-primary-950 text-lg">Aún no hay comentarios</p>
+            <p class="text-primary-600 mt-2">¡Sé el primero en compartir tu opinión!</p>
         </div>
         {/if}
     </div>
  <!-- Formulario para nuevo comentario -->
     <div class="bg-primary-950 p-6 rounded-lg mb-4 border border-primary-800">
-      <h3 class="text-lg font-semibold text-primary-100 mb-4">Únete a la conversación</h3>
+      <h3 class="text-lg font-semibold text-primary-100 mb-4">{comments.length > 0 ? 'Únete a la conversación' : 'Nos gustaría mucho leerte'}</h3>
       <form onsubmit={enviarComentario}>
         <div class="mb-4">
           <label for="nombre" class="block text-primary-200 text-sm font-medium mb-2">

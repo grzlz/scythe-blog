@@ -49,9 +49,9 @@
 
 <section>
   <div class="bg-primary-950 p-8 shadow-md min-w-full  text-justify font-secondary">
-    <h1 class="text-3xl font-bold text-primary-400">Bienvenida</h1>
+    <h1 class="text-3xl font-semibold text-primary-400 font-terciary">Bienvenida</h1>
     <p class=" text-gray-500 mb-4">Tiempo de lectura: 1 minuto</p>
-    <h3 class="text-xl font-semibold text-primary-100 mb-4">Gracias por estar aquí</h3>
+    <h3 class="text-xl font-terciary text-primary-100 mb-4">Gracias por estar aquí</h3>
     <div class="text-primary-200">
       <p class="mb-4">Este blog es el primer paso en un camino que, como dice el poeta, se hace al andar.</p>
       <p class="mb-4">Es una invitación para imaginar la posibilidad de un mundo en el que los beneficios que produce la tecnología estén mejor distribuidos. ¿Por qué? Porque el nivel de riqueza y desigualdad de nuestra sociedad actual no tiene precedentes en la historia de la humanidad. Sólo un dato: el 10% de la población más rica del mundo controla el 76% de la riqueza total de nuestro planeta.</p>
