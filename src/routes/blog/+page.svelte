@@ -48,7 +48,7 @@
 </script>
 
 <section>
-  <div class="bg-primary-950 p-8 shadow-md min-w-full  text-justify font-secondary mb-0">
+  <div class="bg-primary-950 p-8 shadow-md min-w-full  font-secondary mb-0">
     <h1 class="text-3xl font-semibold text-primary-400 font-terciary">Bienvenida</h1>
     <p class=" text-gray-500 mb-4">Tiempo de lectura: 1 minuto</p>
     <h3 class="text-xl font-terciary text-primary-100 mb-4">Gracias por estar aquí</h3>
