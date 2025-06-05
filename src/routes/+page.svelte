@@ -1,4 +1,16 @@
 <script>
+  import { page } from '$app/state';
+	import { track } from '@vercel/analytics';
+
+  let start = Date.now();
+  
+  function handleVisibilityChange() {
+    if (document.visibilityState === 'hidden') {
+			const seconds = Math.round((Date.now() - start) / 1000);
+			track(`time-spent-${page.url.pathname}`, { seconds });
+		}
+	}
+  
   let email = ''; 
   function subscribe() {
     if (email) {
@@ -7,6 +19,18 @@
       email = '';
     }
   }
+
+
+  $effect(() => {
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
+	});
+
+	// Reset timer on route change
+	$effect(() => {
+		page.url.pathname;
+		start = Date.now();
+	});
 </script>
 
 <!-- Sección principal de Scythe -->

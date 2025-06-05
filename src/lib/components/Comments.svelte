@@ -71,7 +71,7 @@
             {#if comments.length === 0}
             <div class="my-7">
                 <p class="text-primary-50 text-lg">Aún no hay comentarios</p>
-                <p class="text-primary-600 mt-2">Puedes ser el primero en compartir su opinión :)</p>
+                <p class="text-primary-600 mt-2">Pero tú puedes abrir la conversación :)</p>
             </div>
             {/if}
 

@@ -1,7 +1,9 @@
 <script>
   import { onMount } from 'svelte';
-  import Comments
-   from '$lib/components/Comments.svelte';
+  import Comments from '$lib/components/Comments.svelte';
+  import { page } from '$app/state';
+	import { track } from '@vercel/analytics';
+
   let { data } = $props();
   let items = $state(data.posts);
   let active = $state({ index: null, level: 0 });
@@ -9,13 +11,18 @@
   let windowWidth = $state(0);
 
   let email = $state('');
-  // Derived state for items with their active states
-  let itemsWithState = $derived(items.map((item, i) => ({
-    ...item,
-    isActive: active.index === i,
-    isExpanded: active.index === i && active.level === 2,
+  let itemsWithState = $derived(items.map((item, i) => ({...item, isActive: active.index === i, isExpanded: active.index === i && active.level === 2,
     isSelected: active.index === i && active.level >= 1
   })));
+
+  let start = Date.now();
+  
+  function handleVisibilityChange() {
+    if (document.visibilityState === 'hidden') {
+			const seconds = Math.round((Date.now() - start) / 1000);
+			track(`time-spent-${page.url.pathname}`, { seconds });
+		}
+	}
 
   onMount(() => {
     mounted = true;
@@ -36,7 +43,17 @@
         : { index: null, level: 0 };
     }
   }
+  
+  $effect(() => {
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
+	});
 
+	// Reset timer on route change
+	$effect(() => {
+		page.url.pathname;
+		start = Date.now();
+	});
 
   function formatDate(dateString) {
     return new Date(dateString).toLocaleDateString('en-US', { 
@@ -55,7 +72,16 @@
     <div class="text-primary-200 mb-8">
       <p class="mb-4">Este blog es el primer paso en un camino que, como dice el poeta, <a href="https://www.zendalibros.com/caminante-no-hay-camino-de-antonio-machado/" target="_blank" rel="noopener noreferrer"> <span class="hover:cursor-pointer hover:text-primary-400 transition-colors duration-200">se hace al andar.</span></a></p>
       <p class="mb-4">Es una invitación para imaginar la posibilidad de un mundo en el que los beneficios que produce la tecnología estén mejor distribuidos. ¿Por qué? Porque el nivel de riqueza y desigualdad de nuestra sociedad actual no tiene precedentes en la historia de la humanidad.</p>
-       <p class="mb-4">Sólo un dato: <span class="underline underline-offset-4">el <span class="font-bold text-white">10%</span> más rico controla el <span class="font-bold text-white">76%</span> de la riqueza total</span> de nuestro planeta mientras que <span class="underline underline-offset-4">el 50% más pobre controla el <span class="font-bold text-white">2%.</span></span><sup><a href="#ref1" id="cite1" class="text-primary-400 hover:text-primary-300">1</a></sup></p>
+<p class="mb-4">
+  Sólo un dato: 
+  <span class="bg-gradient-to-r from-primary-300 to-primary-800 bg-clip-text text-transparent font-bold inline-block">
+    el 10% más rico controla el 76% de la riqueza total del planeta mientras que el 50% más pobre controla el 2%.
+  </span>
+  <sup><a href="#ref1" id="cite1" class="text-primary-400 hover:text-primary-300">1</a></sup>
+</p>
+
+
+
       <p class="mb-2">Este 76% es nuestro nuevo punto de partida porque la inteligencia artificial y la automatización pretenden transformar cada industria, cada trabajo y cada aspecto de nuestras vidas. Parece razonable pensar que de conservar las reglas actuales del juego, esta revolución tecnológica sólo profundizará la desigualdad existente.</p>
       <p class="mb-4">Entonces, si la automatización continúa expandiéndose significativamente, ¿qué ocurrirá cuando el trabajo humano deje de ser necesario? ¿Quién se beneficiará de esa productividad masiva? ¿Sólo quienes poseen el capital?</p> 
       <p class="mb-4">Con el arreglo institucional actual, la respuesta es sí.</p>
