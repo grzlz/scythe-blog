@@ -94,9 +94,6 @@
       <h3 class="text-lg font-semibold text-primary-100 mb-4">{comments.length > 0 ? 'Únete a la conversación' : 'Nos gustaría mucho leerte'}</h3>
       <form onsubmit={enviarComentario}>
         <div class="mb-4">
-          <label for="nombre" class="block text-primary-200 text-sm font-medium mb-2">
-            Nombre
-          </label>
           <input
             id="nombre"
             type="text"
@@ -108,9 +105,7 @@
         </div>
         
         <div class="mb-4">
-          <label for="comentario" class="block text-primary-200 text-sm font-medium mb-2">
-            Comentario
-          </label>
+
           <textarea
             id="comentario"
             bind:value={comentario}

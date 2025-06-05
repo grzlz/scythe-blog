@@ -79,7 +79,7 @@
     </h2>
     <p class="text-lg text-primary-200 mb-10 text-center">Recibe updates semanales en tu bandeja de  entrada</p>
 
-    <div class="flex flex-col sm:flex-row items-center gap-4">
+    <div class="flex text-sm flex-col sm:flex-row items-center gap-4">
       <input type="email" bind:value={email} placeholder="Tu correo electrónico" class="w-full px-4 py-3 rounded-lg bg-blue-50 text-primary-950 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"/>
       <button class="px-6 py-3 rounded-lg bg-blue-400 hover:bg-red-700 text-primary-50 font-bold transition w-full sm:w-auto">Suscribirme</button>
     </div>
