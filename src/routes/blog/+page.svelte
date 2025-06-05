@@ -83,16 +83,16 @@
         Referencias
       </h2>
     </div>
-    
+        
     <div class="bg-primary-950 p-4 mx-auto">
       <div class="space-y-4 text-primary-200 mb-6">
         <p class="leading-relaxed" id="ref1">
           <strong>1.</strong>
           World Inequality Lab. <em>World Inequality Report 2022</em>. Paris: World Inequality Lab, March 2023, 10.
-          <a href="https://wir2022.wid.world/www-site/uploads/2023/03/D_FINAL_WIL_RIM_RAPPORT_2303.pdf" 
-             target="_blank" 
+          <a href="https://wir2022.wid.world/www-site/uploads/2023/03/D_FINAL_WIL_RIM_RAPPORT_2303.pdf"
+             target="_blank"
              rel="noopener noreferrer"
-             class="text-primary-400 hover:text-primary-300 underline transition-colors duration-200">
+             class="text-primary-400 hover:text-primary-300 underline transition-colors duration-200 break-all overflow-wrap-anywhere">
             https://wir2022.wid.world/www-site/uploads/2023/03/D_FINAL_WIL_RIM_RAPPORT_2303.pdf
           </a>.
         </p>
