@@ -8,7 +8,7 @@
 
 </script>
 
-<footer class="bg-primary-100 font-secondary">
+<footer class="bg-primary-50 font-secondary">
     <div class="max-w-6xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-10">
     <div class="prose text-primary-700">
       <h2 class="text-xl font-semibold mb-2 text-primary-900">¿Quiénes somos?</h2>

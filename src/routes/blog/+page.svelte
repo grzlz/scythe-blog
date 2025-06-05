@@ -48,11 +48,11 @@
 </script>
 
 <section>
-  <div class="bg-primary-950 p-8 shadow-md min-w-full  text-justify font-secondary">
+  <div class="bg-primary-950 p-8 shadow-md min-w-full  text-justify font-secondary mb-0">
     <h1 class="text-3xl font-semibold text-primary-400 font-terciary">Bienvenida</h1>
     <p class=" text-gray-500 mb-4">Tiempo de lectura: 1 minuto</p>
     <h3 class="text-xl font-terciary text-primary-100 mb-4">Gracias por estar aquí</h3>
-    <div class="text-primary-200">
+    <div class="text-primary-200 mb-8">
       <p class="mb-4">Este blog es el primer paso en un camino que, como dice el poeta, se hace al andar.</p>
       <p class="mb-4">Es una invitación para imaginar la posibilidad de un mundo en el que los beneficios que produce la tecnología estén mejor distribuidos. ¿Por qué? Porque el nivel de riqueza y desigualdad de nuestra sociedad actual no tiene precedentes en la historia de la humanidad. Sólo un dato: el 10% de la población más rica del mundo controla el 76% de la riqueza total de nuestro planeta.</p>
       <p class="mb-2">Este 76% es nuestro nuevo punto de partida porque la inteligencia artificial y la automatización pretenden transformar cada industria, cada trabajo y cada aspecto de nuestras vidas. Parece razonable pensar que de conservar las reglas actuales del juego, esta revolución tecnológica sólo profundizará la desigualdad existente.</p>
@@ -62,10 +62,16 @@
       <p class="mb-4">Si el problema es sistémico, la solución tiene que ser sistémica. Entonces lo que podemos hacer es pensar, diseñar y construir otro sistema.</p>
       <p>Este espacio es nuestra bitácora de desarrollo para ese otro sistema. El propósito de este blog es tener una conversación abierta contigo porque necesitamos tus ideas, tus dudas y tus críticas. Aquí documentaremos nuestros intentos por construir una alternativa.</p>
     </div>
+    
+    <div class="flex justify-end mb-6">
+      <button class="border border-primary-400 hover:bg-primary-600 hover:text-primary-50 text-primary-300 text-sm font-primary px-6 py-3 rounded-lg transition-colors duration-200">¿Cómo llegamos aquí?</button>
+    </div>
+    
+    <hr class="mx-auto border-primary-200" />
   </div>
 </section>
 
-<section class="bg-gray-300">
+<section>
   <Comments />
 </section>
 
