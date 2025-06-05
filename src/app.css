@@ -39,3 +39,10 @@
 
 
 }
+
+html, body {
+  background-color: #000c14;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
