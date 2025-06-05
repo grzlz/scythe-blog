@@ -54,17 +54,18 @@
     <h3 class="text-xl font-terciary text-primary-100 mb-4">Gracias por estar aquí</h3>
     <div class="text-primary-200 mb-8">
       <p class="mb-4">Este blog es el primer paso en un camino que, como dice el poeta, se hace al andar.</p>
-      <p class="mb-4">Es una invitación para imaginar la posibilidad de un mundo en el que los beneficios que produce la tecnología estén mejor distribuidos. ¿Por qué? Porque el nivel de riqueza y desigualdad de nuestra sociedad actual no tiene precedentes en la historia de la humanidad. Sólo un dato: el 10% de la población más rica del mundo controla el 76% de la riqueza total de nuestro planeta.</p>
+      <p class="mb-4">Es una invitación para imaginar la posibilidad de un mundo en el que los beneficios que produce la tecnología estén mejor distribuidos. ¿Por qué? Porque el nivel de riqueza y desigualdad de nuestra sociedad actual no tiene precedentes en la historia de la humanidad.</p>
+      <p class="mb-4">Sólo un dato: <span class="underline underline-offset-4">el <span class="font-bold text-white">10%</span>  más rico controla el <span class="font-bold text-white">76%</span> de la riqueza total</span> de nuestro planeta mientras que <span class="underline underline-offset-4"> el 50% más pobre controla el <span class="font-bold text-white">2%</span>.</span></p>
       <p class="mb-2">Este 76% es nuestro nuevo punto de partida porque la inteligencia artificial y la automatización pretenden transformar cada industria, cada trabajo y cada aspecto de nuestras vidas. Parece razonable pensar que de conservar las reglas actuales del juego, esta revolución tecnológica sólo profundizará la desigualdad existente.</p>
-      <p class="mb-4">Si la automatización continúa expandiéndose significativamente, ¿qué ocurrirá cuando el trabajo humano deje de ser necesario? ¿Quién se beneficiará de esa productividad masiva? ¿Sólo quienes poseen el capital?</p>
+      <p class="mb-4">Entonces, si la automatización continúa expandiéndose significativamente, ¿qué ocurrirá cuando el trabajo humano deje de ser necesario? ¿Quién se beneficiará de esa productividad masiva? ¿Sólo quienes poseen el capital?</p> 
       <p class="mb-4">Con el arreglo institucional actual, la respuesta es sí.</p>
       <p class="mb-2">¿Qué podemos hacer al respecto?</p>
-      <p class="mb-4">Si el problema es sistémico, la solución tiene que ser sistémica. Entonces lo que podemos hacer es pensar, diseñar y construir otro sistema.</p>
+      <p class="mb-4">Lo que podemos hacer es pensar, diseñar y crear otro sistema, porque si el problema es sistémico, la solución tiene que ser sistémica.</p>
       <p>Este espacio es nuestra bitácora de desarrollo para ese otro sistema. El propósito de este blog es tener una conversación abierta contigo porque necesitamos tus ideas, tus dudas y tus críticas. Aquí documentaremos nuestros intentos por construir una alternativa.</p>
     </div>
     
     <div class="flex justify-end mb-6">
-      <button class="border border-primary-400 hover:bg-primary-600 hover:text-primary-50 text-primary-300 text-sm font-primary px-6 py-3 rounded-lg transition-colors duration-200">¿Cómo llegamos aquí?</button>
+      <button class="border border-primary-400 hover:bg-primary-600 hover:text-primary-50 text-primary-300 text-sm font-primary px-6 py-3 rounded-lg transition-colors duration-200">Siguiete artículo</button>
     </div>
     
     <hr class="mx-auto border-primary-200" />
@@ -73,10 +74,18 @@
 
 <section>
   <Comments />
+
 </section>
 
 
+<section class="bg-primary-950 text-primary-100 justify-center">
+  <div class="flex flex-col items-center">
+    <h2 class="text-primary-200 font-troll">
+      Referencias
 
+    </h2>
+  </div>
+</section>
 
 <section class="font-primary bg-secondary-950 text-primary-100 px-6 py-20 flex flex-col items-center text-center">
   <div class="max-w-xl w-full">
