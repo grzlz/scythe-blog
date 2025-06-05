@@ -10,18 +10,18 @@
 
 <footer class="bg-primary-50 font-secondary">
     <div class="max-w-6xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-10">
-    <div class="prose text-primary-700">
-      <h2 class="text-xl font-semibold mb-2 text-primary-900">¿Quiénes somos?</h2>
-      <p class="text-sm">Somos pensadores, diseñadores y desarrolladores. <br />Estamos construyendo <span class="font-bold text-red-500 font-troll">Scythe</span>, un protocolo que mejora la coordinación entre la economía y el gobierno de un sistema.</p>
-    </div>
-    <div>
-        <h2 class="text-xl font-semibold mb-2 text-primary-900">Trade offer:</h2>
-        <p class="text-sm mb-6 text-primary-700">Si nos das tu correo, te enviaremos nuestro resumen mensual del mundo de la tecnología.</p>
-        <form class="flex flex-col sm:flex-row gap-2">
-            <input type="email" placeholder="¿De verdad te quieres perder esta oportunidad?" class="flex-1 px-4 py-2 rounded-md bg-primary-50 border border-primary-300  placeholder-primary-600 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500"/>
-            <button type="submit" class="bg-secondary-700 hover:bg-secondary-600 hover:text-gray-200 text-primary-100 px-4 py-2 rounded-md text-sm transition">Suscribirme</button>
-        </form>
-    </div>
+        <div class="prose text-primary-950">
+            <h2 class="text-xl font-semibold mb-2 text-primary-900">¿Quiénes somos?</h2>
+            <p class="text-sm">Somos pensadores, diseñadores y desarrolladores. <br />Estamos construyendo <span class="font-bold text-red-500 font-troll">Scythe</span>, un protocolo que mejora la coordinación entre la economía y el gobierno de un sistema.</p>
+        </div>
+        <div class="prose text-primary-950">
+            <h2 class="text-xl font-semibold mb-2 text-primary-900">Trade offer:</h2>
+            <p class="text-sm mb-6 text-primary-950">Si nos das tu correo, te enviaremos nuestro resumen mensual del mundo de la tecnología.</p>
+            <form class="flex flex-col sm:flex-row gap-2">
+                <input type="email" placeholder="Tu correo aquí" class="flex-1 px-4 py-2 rounded-md bg-primary-50 border border-primary-800  placeholder-gray-600 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500"/>
+                <button type="submit" class="bg-secondary-700 hover:bg-secondary-600 hover:text-gray-200 text-primary-100 px-4 py-2 rounded-md text-sm transition">Suscribirme</button>
+            </form>
+        </div>
 
     <div>
         <h2 class="text-xl font-bold mb-4 text-primary-900">Redes sociales</h2>

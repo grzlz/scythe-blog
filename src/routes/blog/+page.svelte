@@ -53,9 +53,9 @@
     <p class=" text-gray-500 mb-4">Tiempo de lectura: 1 minuto</p>
     <h3 class="text-xl font-terciary text-primary-100 mb-4">Gracias por estar aquí</h3>
     <div class="text-primary-200 mb-8">
-      <p class="mb-4">Este blog es el primer paso en un camino que, como dice el poeta, se hace al andar.</p>
+      <p class="mb-4">Este blog es el primer paso en un camino que, como dice el poeta, <a href="https://www.zendalibros.com/caminante-no-hay-camino-de-antonio-machado/" target="_blank" rel="noopener noreferrer"> <span class="hover:cursor-pointer hover:text-primary-400 transition-colors duration-200">se hace al andar.</span></a></p>
       <p class="mb-4">Es una invitación para imaginar la posibilidad de un mundo en el que los beneficios que produce la tecnología estén mejor distribuidos. ¿Por qué? Porque el nivel de riqueza y desigualdad de nuestra sociedad actual no tiene precedentes en la historia de la humanidad.</p>
-      <p class="mb-4">Sólo un dato: <span class="underline underline-offset-4">el <span class="font-bold text-white">10%</span>  más rico controla el <span class="font-bold text-white">76%</span> de la riqueza total</span> de nuestro planeta mientras que <span class="underline underline-offset-4"> el 50% más pobre controla el <span class="font-bold text-white">2%</span>.</span></p>
+       <p class="mb-4">Sólo un dato: <span class="underline underline-offset-4">el <span class="font-bold text-white">10%</span> más rico controla el <span class="font-bold text-white">76%</span> de la riqueza total</span> de nuestro planeta mientras que <span class="underline underline-offset-4">el 50% más pobre controla el <span class="font-bold text-white">2%.</span></span><sup><a href="#ref1" id="cite1" class="text-primary-400 hover:text-primary-300">1</a></sup></p>
       <p class="mb-2">Este 76% es nuestro nuevo punto de partida porque la inteligencia artificial y la automatización pretenden transformar cada industria, cada trabajo y cada aspecto de nuestras vidas. Parece razonable pensar que de conservar las reglas actuales del juego, esta revolución tecnológica sólo profundizará la desigualdad existente.</p>
       <p class="mb-4">Entonces, si la automatización continúa expandiéndose significativamente, ¿qué ocurrirá cuando el trabajo humano deje de ser necesario? ¿Quién se beneficiará de esa productividad masiva? ¿Sólo quienes poseen el capital?</p> 
       <p class="mb-4">Con el arreglo institucional actual, la respuesta es sí.</p>
@@ -74,16 +74,31 @@
 
 <section>
   <Comments />
-
 </section>
 
-
-<section class="bg-primary-950 text-primary-100 justify-center">
-  <div class="flex flex-col items-center">
-    <h2 class="text-primary-200 font-troll">
-      Referencias
-
-    </h2>
+<section id="referencias" class="bg-primary-950 text-primary-100">
+  <div class="max-w-4xl mx-auto px-8 py-6">
+    <div class="">
+      <h2 class="text-3xl text-primary-200 font-troll">
+        Referencias
+      </h2>
+    </div>
+    
+    <div class="bg-primary-950 p-4 mx-auto">
+      <div class="space-y-4 text-primary-200 mb-6">
+        <p class="leading-relaxed" id="ref1">
+          <strong>1.</strong>
+          World Inequality Lab. <em>World Inequality Report 2022</em>. Paris: World Inequality Lab, March 2023, 10.
+          <a href="https://wir2022.wid.world/www-site/uploads/2023/03/D_FINAL_WIL_RIM_RAPPORT_2303.pdf" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             class="text-primary-400 hover:text-primary-300 underline transition-colors duration-200">
+            https://wir2022.wid.world/www-site/uploads/2023/03/D_FINAL_WIL_RIM_RAPPORT_2303.pdf
+          </a>.
+        </p>
+      </div>
+      <hr class="mx-auto border-primary-200" />
+    </div>
   </div>
 </section>
 
