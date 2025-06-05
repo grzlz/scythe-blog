@@ -8,7 +8,12 @@
 <section>
   <div class="bg-primary-950 p-8 shadow-md min-w-full  font-secondary mb-0">
     <h1 class="text-3xl font-semibold text-primary-400 font-terciary">Bienvenida</h1>
-    <p class=" text-gray-500 mb-4">Tiempo de lectura: 1 minuto</p>
+    <p class="flex text-sm items-center gap-0.5 text-gray-500 mb-4">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      1 minuto de lectura
+    </p>
     <h3 class="text-xl font-terciary text-primary-100 mb-4">Gracias por estar aquí</h3>
     <div class="text-primary-200 mb-8">
       <p class="mb-4">Este blog es el primer paso en un camino que, como dice el poeta, <a href="https://www.zendalibros.com/caminante-no-hay-camino-de-antonio-machado/" target="_blank" rel="noopener noreferrer"> <span class="hover:cursor-pointer hover:text-primary-400 transition-colors duration-200">se hace al andar.</span></a></p>
