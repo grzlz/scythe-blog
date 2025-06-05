@@ -1,67 +1,8 @@
 <script>
-  import { onMount } from 'svelte';
   import Comments from '$lib/components/Comments.svelte';
-  import { page } from '$app/state';
-	import { track } from '@vercel/analytics';
-
-  let { data } = $props();
-  let items = $state(data.posts);
-  let active = $state({ index: null, level: 0 });
-  let mounted = $state(false);
-  let windowWidth = $state(0);
 
   let email = $state('');
-  let itemsWithState = $derived(items.map((item, i) => ({...item, isActive: active.index === i, isExpanded: active.index === i && active.level === 2,
-    isSelected: active.index === i && active.level >= 1
-  })));
 
-  let start = Date.now();
-  
-  function handleVisibilityChange() {
-    if (document.visibilityState === 'hidden') {
-			const seconds = Math.round((Date.now() - start) / 1000);
-			track(`time-spent-${page.url.pathname}`, { seconds });
-		}
-	}
-
-  onMount(() => {
-    mounted = true;
-    windowWidth = window.innerWidth;
-    
-    const handleResize = () => windowWidth = window.innerWidth;
-    window.addEventListener('resize', handleResize);
-    
-    return () => window.removeEventListener('resize', handleResize);
-  });
-
-  function handleCardClick(i) {
-    if (active.index !== i) {
-      active = { index: i, level: 1 };
-    } else {
-      active = active.level === 1
-        ? { index: i, level: 2 }
-        : { index: null, level: 0 };
-    }
-  }
-  
-  $effect(() => {
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-    return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
-	});
-
-	// Reset timer on route change
-	$effect(() => {
-		page.url.pathname;
-		start = Date.now();
-	});
-
-  function formatDate(dateString) {
-    return new Date(dateString).toLocaleDateString('en-US', { 
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
-  }
 </script>
 
 <section>
