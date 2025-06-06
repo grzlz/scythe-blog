@@ -3,13 +3,11 @@
   import { supabase } from '$lib/supabase';
   import { page } from '$app/state';
   
-  // Props
-
   let postId = $derived(() => {
     if (page.params.slug) {
         return page.params.slug
     } 
-    else if (page.url.pathname === '/blog') {
+    if (page.url.pathname === '/blog') {
         return 'home'
     }
 
@@ -17,7 +15,7 @@
   })
 
   $effect(() => {
-    console.log(postId, 'postId');
+    console.log(page)
   });
   
   let comments = $state([]);
