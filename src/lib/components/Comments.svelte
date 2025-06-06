@@ -15,6 +15,10 @@
 
     return page.url.pathname.split('/').pop() || 'default';
   })
+
+  $effect(() => {
+    console.log(postId, 'postId');
+  });
   
   let comments = $state([]);
   let cargando = $state(true);
