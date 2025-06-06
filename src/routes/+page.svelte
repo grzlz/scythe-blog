@@ -20,7 +20,7 @@
     <p class="text-lg md:text-xl text-primary-200 my-8 mb-8">Es una forma de desarrollar software que no depende del capital.</p>
     <p class="text-lg md:text-xl text-primary-200 my-8 mb-8">Entra al blog para saber más.</p>
     <div class="mt-4">
-      <a href="/blog?utm_source=homepage&utm_medium=cta_button&utm_campaign=hero_section" class="inline-block px-6 py-3 rounded-lg border border-primary-400 text-primary-300 hover:text-white hover:border-white hover:bg-primary-800 transition font-semibold">Explorar →</a>
+      <a href="/blog?utm_source=homepage&utm_medium=cta&utm_campaign=hero_section&utm_content=explore_button" class="inline-block px-6 py-3 rounded-lg border border-primary-400 text-primary-300 hover:text-white hover:border-white hover:bg-primary-800 transition font-semibold">Explorar →</a>
     </div>
   </div>
 </section>
