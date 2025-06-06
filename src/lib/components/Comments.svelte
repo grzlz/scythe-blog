@@ -10,7 +10,7 @@
     if (page.url.pathname === '/blog') {
         return 'home'
     }
-    
+
     return page.url.pathname.split('/').pop() || 'default';
   })
 
@@ -150,16 +150,7 @@
     }
   }
   
-  // Lifecycle hooks
-  onMount(() => {
-    cargarComentarios();
-    configurarSuscripcion();
-  });
-  
-  onDestroy(() => {
-    limpiarSuscripcion();
-  });
-  
+
   // Reactivamente recargar si cambia el postId
   $effect(() => {
     if (postId) {
