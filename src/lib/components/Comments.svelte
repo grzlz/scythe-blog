@@ -212,7 +212,7 @@
             
             <form onsubmit={enviarComentario}>
                 <div class="mb-4">
-                    <input id="nombre" type="text" bind:value={nombre} placeholder="Tu nombre" class="w-full px-3 py-2 border -primary-700 rounded-md text-primary-100 placeholder-primary-400 focus:outline-none focus:ring-2 :ring-primary-500 :border-transparent" disabled={enviando} required/>
+                    <input id="nombre" type="text" bind:value={nombre} placeholder="Tu nombre" class="w-full px-3 py-2 border border-primary-700 rounded-md text-primary-100 placeholder-primary-400 focus:outline-none focus:ring-2 :ring-primary-500 :border-transparent" disabled={enviando} required/>
                 </div>
                 
                 <div class="mb-4">
