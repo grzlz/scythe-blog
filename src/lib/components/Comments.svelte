@@ -194,13 +194,13 @@
             {/if}
 
             {#each comments as comentario (comentario.id)}
-              <div class="p-6 rounded-lg">
-                  <div class="flex items-center mb-3 justify-between">
+              <div class="px-3 pb-3">
+                  <div class="flex items-center mb-1 justify-between">
                       <h4 class="font-semibold text-primary-500">{comentario.nombre}</h4>
-                      <p class="text-xs text-primary-600">{formatearFecha(comentario.created_at)}</p>
+                      <p class="text-xs text-primary-300">{formatearFecha(comentario.created_at)}</p>
                   </div>
-                  <p class="text-gray-200">{comentario.comentario}</p>
-                  <hr class="my-4 border-primary-200" />
+                  <p class="mb-2 text-primary-100">{comentario.comentario}</p>
+                  <hr class=" border-primary-900" />
               </div>
             {/each}
         </div>
