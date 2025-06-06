@@ -3,21 +3,18 @@
   import { supabase } from '$lib/supabase';
   import { page } from '$app/state';
   
-  let postId = $derived(() => {
+  let postId = $derived.by(() => {
     if (page.params.slug) {
         return page.params.slug
     } 
     if (page.url.pathname === '/blog') {
         return 'home'
     }
-
+    
     return page.url.pathname.split('/').pop() || 'default';
   })
 
-  $effect(() => {
-    console.log(page)
-  });
-  
+
   let comments = $state([]);
   let cargando = $state(true);
   let error = $state(null);
