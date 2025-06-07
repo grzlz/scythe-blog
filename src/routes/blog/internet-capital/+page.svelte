@@ -18,46 +18,42 @@
 </svelte:head>
 
 <div class="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 font-primary">
-	<main class="flex flex-col items-center px-0 py-0">
-		<article class="w-full max-w-4xl">
-			<!-- Magazine Cover Hero Section -->
-			<section 
-				class="relative w-full h-[90vh] flex items-center justify-center text-center bg-contain bg-center bg-no-repeat"
-				style="background-image: url('/poster.png');"
-			>
-				<!-- Enhanced overlay for better contrast -->
-				<div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/60"></div>
+  <main class="flex flex-col items-center px-0 py-0">
+    <article class="w-full max-w-4xl">
+      <!-- Fullscreen Magazine Hero -->
+      <section 
+        class="relative w-full min-h-screen flex items-center justify-center text-center bg-cover bg-center bg-no-repeat"
+        style="background-image: url('/poster.png');"
+      >
+        <!-- Gradient overlay to improve readability -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70"></div>
 
-				<!-- Header content with magazine styling -->
-				<div class="relative z-10 px-6 max-w-4xl">
-					<!-- Magazine-style title with dramatic hierarchy -->
-					<h1 class="text-4xl md:text-5xl lg:text-7xl font-black text-white leading-tight tracking-tight mb-8">
-						<span class="block drop-shadow-2xl">¿Qué fue de la</span>
-						<span class="block text-yellow-400 drop-shadow-2xl text-5xl md:text-6xl lg:text-8xl">Information</span>
-						<span class="block drop-shadow-2xl">Superhighway?</span>
-					</h1>
-					
-					<!-- Subtitle in magazine card style -->
-					<div class="bg-white/95 backdrop-blur-sm p-6 md:p-8 rounded-xl shadow-2xl border-l-4 border-yellow-400 max-w-3xl mx-auto">
-						<p class="text-lg md:text-xl text-slate-800 leading-relaxed font-medium">
-							La Information Superhighway fue una visión del futuro de Internet en la década de 1990, donde se esperaba que la conectividad y el acceso a la información transformaran la sociedad.
-						</p>
-					</div>
+        <!-- Title and subtitle positioned within the hero image -->
+        <div class="relative z-10 px-4 sm:px-8 py-16 max-w-3xl">
+          <h1 class="text-white text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight drop-shadow-2xl">
+            <span class="block">¿Qué fue de la</span>
+            <span class="block text-yellow-400 text-4xl sm:text-6xl lg:text-8xl">Information</span>
+            <span class="block">Superhighway?</span>
+          </h1>
 
-					<!-- Magazine-style tags -->
-					<div class="flex flex-wrap justify-center gap-4 mt-8">
-						<div class="bg-red-600 text-white px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wide shadow-lg">
-							Edición Especial
-						</div>
-						<div class="bg-yellow-400 text-black px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wide shadow-lg">
-							Tecnología
-						</div>
-						<div class="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wide shadow-lg">
-							Historia Digital
-						</div>
-					</div>
-				</div>
-			</section>
+          <p class="mt-6 text-base sm:text-lg md:text-xl text-white/90 font-medium leading-relaxed drop-shadow-lg">
+            La Information Superhighway fue una visión del futuro de Internet en la década de 1990, donde se esperaba que la conectividad y el acceso a la información transformaran la sociedad.
+          </p>
+
+          <!-- Optional tags -->
+          <div class="flex flex-wrap justify-center gap-2 sm:gap-4 mt-6">
+            <span class="bg-yellow-400 text-black px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wide shadow">
+              Tecnología
+            </span>
+            <span class="bg-red-600 text-white px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wide shadow hidden sm:inline-block">
+              Edición Especial
+            </span>
+            <span class="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wide shadow hidden sm:inline-block">
+              Historia Digital
+            </span>
+          </div>
+        </div>
+      </section>
 
 			<!-- Content Section -->
 			<div class="flex flex-col lg:flex-row gap-12 px-6 py-12">
