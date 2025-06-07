@@ -22,18 +22,18 @@
 		<article class="w-full max-w-4xl">
 			<!-- Magazine Cover Hero Section -->
 			<section class="relative w-full h-screen md:h-[90vh]">
-				<!-- Full screen image -->
+				<!-- Full screen image with smart positioning -->
 				<img 
 					src="/poster.png" 
 					alt="Information Superhighway Poster"
-					class="absolute inset-0 w-full h-full object-contain md:object-contain"
+					class="absolute inset-0 w-full h-full object-cover object-center z-0"
 				/>
 				
 				<!-- Enhanced overlay for better contrast -->
-				<div class="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40 md:from-black/40 md:via-black/50 md:to-black/60"></div>
+				<div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/50 z-10"></div>
 
 				<!-- Mobile: Text positioned around the image -->
-				<div class="md:hidden absolute inset-0 flex flex-col justify-between p-6 text-white">
+				<div class="md:hidden absolute inset-0 flex flex-col justify-between p-6 text-white z-20">
 					<!-- Title at top -->
 					<div class="pt-8">
 						<h1 class="text-3xl font-black leading-tight tracking-tight drop-shadow-2xl">
@@ -56,7 +56,7 @@
 				</div>
 
 				<!-- Desktop: Centered content as before -->
-				<div class="hidden md:flex relative z-10 h-full items-center justify-center text-center px-4">
+				<div class="hidden md:flex relative z-20 h-full items-center justify-center text-center px-4">
 					<div class="max-w-4xl">
 						<!-- Magazine-style title -->
 						<h1 class="text-5xl lg:text-7xl font-black text-white leading-tight tracking-tight mb-8">
