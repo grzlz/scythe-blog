@@ -23,7 +23,7 @@
 			<!-- Magazine Cover Hero Section -->
 			<section class="relative w-full h-screen md:h-[90vh]">
 				<!-- Full screen image on mobile, contained on desktop -->
-				<div class="absolute inset-0 md:bg-contain md:bg-center md:bg-no-repeat bg-cover bg-center"
+				<div class="absolute inset-0 md:bg-contain md:bg-center md:bg-no-repeat bg-contain bg-center"
 					 style="background-image: url('/poster.png');">
 				</div>
 				
