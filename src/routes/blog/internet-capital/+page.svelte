@@ -21,7 +21,7 @@
 	<main class="flex flex-col items-center">
 		<article class="w-full max-w-4xl">
 			<!-- Magazine Cover Hero Section -->
-			<section class="relative w-full h-[93vh] md:h-[90vh]">
+			<section class="relative w-full h-[94vh] md:h-[90vh]">
 				<!-- Full screen image with smart positioning -->
 				<img 
 					src="/poster.png" 
