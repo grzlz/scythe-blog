@@ -30,7 +30,7 @@
 				/>
 				
 				<!-- Enhanced overlay for better contrast -->
-				<div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/20 z-1"></div>
+				<div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/30 z-1"></div>
 
 
 
