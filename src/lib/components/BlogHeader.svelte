@@ -29,10 +29,12 @@
 {#if logoClick}
 
 <ul class="flex flex-col bg-secondary-900 font-primary text-blue-100 md:hidden p-4 space-y-2" in:slide={{ duration: 400 }} out:slide={{ duration: 400 }}>
-    <li class="flex items-center space-x-2 shadow-lg rounded-b-lg p-4 justify-between space-y-3 hover:bg-secondary-600 hover:text-blue-50">
-        <a href="/scythe" class="hover:underline">Escuela</a>
-        <img src="/logo.png" alt="scythe.mx logo" class="w-10 h-10" />
-	</li>
+    <li class="shadow-lg rounded-b-lg p-4 hover:bg-secondary-600 hover:text-blue-50">
+        <a href="https://icarus.mx/?utm_source=navbar&utm_medium=website_scythe&utm_campaign=scythe_link" class="flex items-center justify-between space-x-2">
+            <span class="hover:underline">Escuela</span>
+            <img src="/logo.png" alt="scythe.mx logo" class="w-10 h-10" />
+        </a>
+    </li>
     
     <li class="flex items-center justify-between shadow-lg rounded-b-lg p-4 hover:bg-secondary-600 hover:text-blue-50">
         <a href="/portafolio" class="flex items-center gap-3 hover:underline">Portafolio</a>
@@ -42,7 +44,7 @@
     </li>
     
     <li class="shadow-lg inline-block rounded-b-lg hover:bg-secondary-600 hover:text-blue-50  ml-3">
-        <a href="/scythe" class="flex justify-between items-center p-2 gap-3 w-full h-full hover:underline">
+        <a href="/" class="flex justify-between items-center p-2 gap-3 w-full h-full hover:underline">
             <span class="text-base font-medium text-primary-100">Scythe</span>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" class="w-10 h-10 text-[#b74127]">
                 <path d="M 46 38 L 39 154 L 154 155 L 155 116 L 105 95 L 104 83 L 73 100 L 68 38 Z" fill="currentColor"/>

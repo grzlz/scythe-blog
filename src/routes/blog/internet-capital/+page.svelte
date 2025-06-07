@@ -1,0 +1,1 @@
+<h2>Gracias por tu interés en nuestra siguiente entrega</h2>

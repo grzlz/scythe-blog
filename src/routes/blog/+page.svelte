@@ -66,7 +66,7 @@
     </div>
     
     <div class="flex justify-end mb-6">
-      <button class="border border-primary-400 hover:bg-primary-600 hover:text-primary-50 text-primary-300 text-sm font-primary px-6 py-3 rounded-lg transition-colors duration-200">Siguiete artículo</button>
+      <a href="/blog/internet-capital/" class="border border-primary-400 hover:bg-primary-600 hover:text-primary-50 text-primary-300 text-sm font-primary px-6 py-3 rounded-lg transition-colors duration-200" aria-label="Leer siguiente artículo" onclick={() => track('siguiente_articulo_click')}>Siguiente artículo →</a>
     </div>
     
     <hr class="mx-auto border-primary-200" />
