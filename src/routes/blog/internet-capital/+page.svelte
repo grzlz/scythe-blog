@@ -21,7 +21,7 @@
 	<main class="flex flex-col items-center">
 		<article class="w-full max-w-4xl">
 			<!-- Magazine Cover Hero Section -->
-			<section class="relative w-full h-[80vh] md:h-[90vh]">
+			<section class="relative w-full h-[93vh] md:h-[90vh]">
 				<!-- Full screen image with smart positioning -->
 				<img 
 					src="/poster.png" 
@@ -80,7 +80,7 @@
 						prose-blockquote:border-l-blue-500 prose-blockquote:bg-blue-50/50 dark:prose-blockquote:bg-blue-950/20
 						prose-img:rounded-lg prose-img:shadow-lg">
 						
-						<h2>El Sueño de la Conectividad Universal</h2>
+						<h2 class="text-gray-600">¿Cómo llegamos aquí?</h2>
 						<p>Aquí va el contenido del artículo. Puedes incluir párrafos, imágenes, enlaces y más. Este es un ejemplo de cómo se vería el contenido del artículo con un estilo limpio y moderno.</p>
 						
 						<p>La Information Superhighway prometía democratizar el acceso a la información y conectar a todas las personas del mundo en una red global de conocimiento compartido.</p>
