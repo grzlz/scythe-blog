@@ -21,7 +21,7 @@
 	<main class="flex flex-col items-center">
 		<article class="w-full max-w-4xl">
 			<!-- Magazine Cover Hero Section -->
-			<section class="relative w-full h-screen md:h-[90vh]">
+			<section class="relative w-full h-[80vh] md:h-[90vh]">
 				<!-- Full screen image with smart positioning -->
 				<img 
 					src="/poster.png" 
@@ -30,15 +30,9 @@
 				/>
 				
 				<!-- Enhanced overlay for better contrast -->
-				<div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/30 z-10"></div>
+				<div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/20 z-1"></div>
 
-				<!-- Mobile: Text positioned around the image -->
-				<div class="md:hidden absolute inset-0 flex px-4 z-20">
-						<h1 class="text-4xl font-extrabold leading-snug tracking-tight  text-white/90 drop-shadow-md pt-6 mt-55">
-							¿Qué fue de la
-							<span class="block text-yellow-400 text-5xl">Information Superhighway?</span>
-						</h1>
-				</div>
+
 
 				<!-- Desktop: Centered content as before -->
 				<div class="hidden md:flex relative z-20 h-full items-center justify-center text-center px-4">
