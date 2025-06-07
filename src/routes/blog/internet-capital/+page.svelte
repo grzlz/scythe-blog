@@ -22,10 +22,12 @@
 		<article class="w-full max-w-4xl">
 			<!-- Magazine Cover Hero Section -->
 			<section class="relative w-full h-screen md:h-[90vh]">
-				<!-- Full screen image on mobile, contained on desktop -->
-				<div class="absolute inset-0 md:bg-contain md:bg-center md:bg-no-repeat bg-contain bg-center"
-					 style="background-image: url('/poster.png');">
-				</div>
+				<!-- Full screen image -->
+				<img 
+					src="/poster.png" 
+					alt="Information Superhighway Poster"
+					class="absolute inset-0 w-full h-full object-contain md:object-contain"
+				/>
 				
 				<!-- Enhanced overlay for better contrast -->
 				<div class="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40 md:from-black/40 md:via-black/50 md:to-black/60"></div>
