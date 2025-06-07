@@ -18,7 +18,7 @@
 </svelte:head>
 
 <div class="min-h-screen bg-gradient-to-b from-primary-950 to-primary-900 font-primary">
-	<main class="flex flex-col items-center px-0 py-0">
+	<main class="flex flex-col items-center">
 		<article class="w-full max-w-4xl">
 			<!-- Magazine Cover Hero Section -->
 			<section class="relative w-full h-screen md:h-[90vh]">
@@ -33,16 +33,16 @@
 				<div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/50 z-10"></div>
 
 				<!-- Mobile: Text positioned around the image -->
-				<div class="md:hidden absolute inset-y-60 flex flex-col justify-around p-6 text-white z-20">
+				<div class="md:hidden absolute inset-0  flex flex-col justify-center text-white z-20 ">
 					<!-- Title at top -->
-					<div class="pt-8 bg-primary-900/60  rounded-lg p-4">
-						<h1 class="text-4xl font-extrabold leading-snug tracking-tight drop-shadow-2xl">
+					<div class="pt-8 rounded-lg p-4 mb-6 ">						
+						<h1 class="text-4xl font-extrabold leading-snug tracking-tight  text-white/90 drop-shadow-md backdrop-blur-sm bg-black/20 p-4 rounded-xl">
 							¿Qué fue de la
-							<span class="block text-yellow-400 text-5xl">Information Superhighway?</span>
+							<span class="block text-primary-400 text-5xl">Information Superhighway?</span>
 						</h1>
 					</div>
 					
-					<div class="pb-10">
+					<div class="pb-10 w-full px-4">
 						<p class="leading-relaxed text-white/90 drop-shadow-md backdrop-blur-sm bg-black/20 p-4 rounded-xl">La Information Superhighway fue una visión del futuro de Internet en la década de 1990, donde se esperaba que la conectividad y el acceso a la información transformaran la sociedad.</p>
 						<div class="mt-4">
 							<span class="bg-yellow-400 text-black px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider shadow-md inline-block">Historia</span>
