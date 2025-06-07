@@ -17,7 +17,7 @@
 	<meta property="og:description" content='El internet y sus promesas de emancipación truncadas' />
 </svelte:head>
 
-<div class="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 font-primary">
+<div class="min-h-screen bg-gradient-to-b from-primary-950 to-primary-900 font-primary">
 	<main class="flex flex-col items-center px-0 py-0">
 		<article class="w-full max-w-4xl">
 			<!-- Magazine Cover Hero Section -->
