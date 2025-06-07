@@ -22,18 +22,26 @@
 
 
 
-	<main class="flex flex-col items-center px-6 py-12">
+	<main class="flex flex-col items-center px-0 py-0">
         <article class="w-full max-w-4xl">
-            <header class="flex flex-col gap-6 mb-12">
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-slate-100 leading-tight">¿Qué fue de la Information Superhighway?</h1>
-                <p class="text-xl md:text-2xl text-slate-600 dark:text-slate-400 leading-relaxed">
-					La Information Superhighway fue una visión del futuro de Internet en la década de 1990, donde se esperaba que la conectividad y el acceso a la información transformaran la sociedad.</p>
-			</header>
-            
-            <div class="mb-12">
-                <img src="/poster.png" alt="Poster" class="w-full max-h-[90vh] object-contain rounded-2xl shadow-xl" />
-            </div>
-            
+            <section 
+    class="relative w-full h-[90vh] flex items-center justify-center text-center bg-cover bg-center bg-no-repeat"
+    style="background-image: url('/poster.png');"
+  >
+    <!-- Overlay for better contrast -->
+    <div class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+
+    <!-- Header content on top of image -->
+    <div class="relative z-10 px-6 max-w-4xl">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight drop-shadow-lg">
+        ¿Qué fue de la Information Superhighway?
+      </h1>
+      <p class="mt-6 text-lg md:text-xl text-gray-100 leading-relaxed drop-shadow-md">
+        La Information Superhighway fue una visión del futuro de Internet en la década de 1990, donde se esperaba que la conectividad y el acceso a la información transformaran la sociedad.
+      </p>
+    </div>
+  </section>
+
             <div class="flex flex-col lg:flex-row gap-12">
                 <div class="flex-1">
                     <div class="prose prose-lg prose-slate dark:prose-invert max-w-none
