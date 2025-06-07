@@ -70,9 +70,15 @@
       />
       <button
         onclick={() => subscribe('homepage')}
-        class="px-6 py-3 rounded-lg bg-red-600 hover:bg-red-700 text-white font-bold transition w-full sm:w-auto"
+        class="px-6 py-3 rounded-lg bg-red-600 hover:bg-red-700 text-white font-bold transition w-full sm:w-auto whitespace-nowrap"
       >
-        Suscribirme
+      {#if feedback}
+      {feedback}
+      {:else if loading}
+      Suscribiendo…
+      {:else}
+      Suscribirme
+      {/if}
       </button>
     </div>
   </div>

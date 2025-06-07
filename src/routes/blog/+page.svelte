@@ -1,7 +1,43 @@
 <script>
+  import { supabase } from '$lib/supabase';
+  import { track } from '@vercel/analytics';
+
   import Comments from '$lib/components/Comments.svelte';
 
   let email = $state('');
+  let loading = $state(false);
+  let feedback = $state('');
+  
+  /**
+   * Inserta un email en Supabase con la fuente dada.
+   * @param {string} source - etiqueta de dónde vino la suscripción
+   */
+  async function subscribe(source) {
+    loading  = true;
+
+    // Opcional: trackear en Vercel Analytics
+    track('newsletter_subscribe', { email, source });
+
+    // Insertar en Supabase
+    const { data, error } = await supabase
+      .from('emails')
+      .insert([
+        {
+          email:  email.toLowerCase().trim(),
+          source
+        }
+      ]);
+
+    if (error) {
+      console.error('Error inserting email:', error);
+      feedback = 'Ocurrió un error. Intenta de nuevo más tarde.';
+    } else {
+      feedback = '¡Gracias por suscribirte!';
+      email    = '';  // limpia el campo
+    }
+
+    loading = false;
+  }
 
 </script>
 
@@ -76,7 +112,15 @@
 
     <div class="flex text-sm flex-col sm:flex-row items-center gap-4">
       <input type="email" bind:value={email} placeholder="Tu correo electrónico" class="w-full px-4 py-3 rounded-lg bg-blue-50 text-primary-950 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"/>
-      <button class="px-6 py-3 rounded-lg border border-primary-300 hover:bg-primary-600 text-primary-50 transition w-full sm:w-auto">Suscribirme</button>
+      <button class="px-6 py-3 rounded-lg border border-primary-300 hover:bg-primary-600 text-primary-50 transition w-full sm:w-auto">
+        {#if feedback}
+        {feedback}
+        {:else if loading}
+        Suscribiendo…
+        {:else}
+        Suscribirme
+        {/if}
+      </button>
     </div>
   </div>
 </section>
