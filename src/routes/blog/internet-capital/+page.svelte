@@ -22,7 +22,7 @@
 		<article class="w-full max-w-4xl">
 			<!-- Magazine Cover Hero Section -->
 			<section 
-				class="relative w-full h-[90vh] flex items-center justify-center text-center bg-cover bg-center bg-no-repeat"
+				class="relative w-full h-[90vh] flex items-center justify-center text-center bg-contain bg-center bg-no-repeat"
 				style="background-image: url('/poster.png');"
 			>
 				<!-- Enhanced overlay for better contrast -->
