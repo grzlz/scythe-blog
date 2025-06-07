@@ -34,10 +34,9 @@
 
 				<!-- Mobile: Text positioned around the image -->
 				<div class="md:hidden absolute inset-0 flex px-4 z-20">
-					<!-- Title at top -->
-						<h1 class="text-5xl font-extrabold leading-snug tracking-tight  text-white/90 drop-shadow-md pt-6 mt-55">
+						<h1 class="text-4xl font-extrabold leading-snug tracking-tight  text-white/90 drop-shadow-md pt-6 mt-55">
 							¿Qué fue de la
-							<span class="block text-primary-400 text-6xl">Information Superhighway?</span>
+							<span class="block text-primary-400 text-5xl">Information Superhighway?</span>
 						</h1>
 				</div>
 
