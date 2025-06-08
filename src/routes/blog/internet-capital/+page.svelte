@@ -17,7 +17,7 @@
 	<meta property="og:description" content='El internet y sus promesas de emancipación truncadas' />
 </svelte:head>
 
-<div class="min-h-screen bg-gradient-to-b from-primary-950 to-primary-900 font-primary">
+<div class="min-h-screen font-primary">
 	<main class="flex flex-col items-center">
 		<article class="w-full max-w-4xl">
 			<!-- Magazine Cover Hero Section -->
@@ -30,7 +30,7 @@
 				/>
 				
 				<!-- Enhanced overlay for better contrast -->
-				<div class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black/60 z-1"></div>
+				<div class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/30 to-black/50 z-1"></div>
 
 
 
@@ -68,36 +68,33 @@
 			</section>
 
 			<!-- Content Section -->
-			<div class="flex flex-col lg:flex-row gap-12 px-6 py-12">
+			<div class="flex flex-col lg:flex-row gap-12 px-6 py-12 bg-gradient-to-b from-primary-950 to-primary-900">
 				<div class="flex-1">
 					<div class="prose prose-lg prose-slate dark:prose-invert max-w-none
-						prose-headings:font-bold prose-headings:text-slate-900 dark:prose-headings:text-slate-100
-						prose-p:text-slate-700 dark:prose-p:text-slate-300 prose-p:leading-relaxed
-						prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline
-						prose-strong:text-slate-900 dark:prose-strong:text-slate-100
-						prose-code:text-pink-600 dark:prose-code:text-pink-400 prose-code:bg-slate-100 dark:prose-code:bg-slate-800
-						prose-pre:bg-slate-900 dark:prose-pre:bg-slate-950
-						prose-blockquote:border-l-blue-500 prose-blockquote:bg-blue-50/50 dark:prose-blockquote:bg-blue-950/20
-						prose-img:rounded-lg prose-img:shadow-lg">
+						prose-headings:font-bold prose-headings:text-gray-700 prose-p:text-gray-300  prose-p:leading-relaxed
+						prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline
+						prose-strong:text-slate-100 prose-code:text-pink-400 prose-code:bg-slate-800 prose-pre:bg-slate-950 prose-blockquote:border-l-blue-500 prose-blockquote:bg-blue-950/50 prose-img:rounded-lg prose-img:shadow-lg">
 						
-						<h2 class="text-gray-600">¿Cómo llegamos aquí?</h2>
-						<p>Aquí va el contenido del artículo. Puedes incluir párrafos, imágenes, enlaces y más. Este es un ejemplo de cómo se vería el contenido del artículo con un estilo limpio y moderno.</p>
-						
-						<p>La Information Superhighway prometía democratizar el acceso a la información y conectar a todas las personas del mundo en una red global de conocimiento compartido.</p>
+						<h2>¿Cómo llegamos aquí?</h2>
+						<p>En los años 90, la <em>Information Superhighway</em> fue la bandera de los primeros utopistas digitales. Prometía acceso ilimitado al conocimiento, una ciudadanía global conectada y nuevas formas de democracia.</p> 
+						<p>En el siguiente artículo, exploraremos qué fue de esa visión original y cómo nos trajo al presente que habitamos hoy.</p>
 
-						<blockquote>
+						<p>Recuerda suscribirte al newsletter si quieres que te avisemos cuando esté listo :)</p>
+
+						<img src="/sham.png" alt="Horrifying sham" />
+
+
+						
+						<!-- <blockquote>
 							<p>"The Information Superhighway will change the way we work, learn, shop, and communicate." - Al Gore, 1993</p>
-						</blockquote>
+						</blockquote> -->
 
-						<h3>¿Qué salió mal?</h3>
-						<p>A pesar de las promesas iniciales, la realidad de Internet ha sido más compleja, con desafíos relacionados con la privacidad, la desinformación y la concentración del poder en pocas empresas tecnológicas.</p>
 					</div>
 				</div>
 
 				<!-- Sidebar -->
-				<aside class="lg:w-80 flex-shrink-0">
+				<!-- <aside class="lg:w-80 flex-shrink-0">
 					<div class="sticky top-24 space-y-8">
-						<!-- Table of Contents -->
 						<div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg border border-slate-200 dark:border-slate-700">
 							<h3 class="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-4">
 								Tabla de Contenidos
@@ -115,7 +112,6 @@
 							</nav>
 						</div>
 
-						<!-- Share -->
 						<div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg border border-slate-200 dark:border-slate-700">
 							<h3 class="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-4">
 								Compartir este artículo
@@ -130,7 +126,6 @@
 							</div>
 						</div>
 
-						<!-- Related Posts -->
 						<div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg border border-slate-200 dark:border-slate-700">
 							<h3 class="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-4">
 								Artículos Relacionados
@@ -155,7 +150,7 @@
 							</div>
 						</div>
 					</div>
-				</aside>
+				</aside> -->
 			</div>
 		</article>
 	</main>
