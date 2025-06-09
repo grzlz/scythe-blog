@@ -47,9 +47,8 @@
 
 <svelte:head>
 	<title>¿Qué fue de la Information Superhighway?</title>
-	<meta name="description" content='Sustituir aquí' />
 	<meta property="og:title" content='¿Qué fue de la Information Superhighway?' />
-	<meta property="og:description" content='El internet y sus promesas de emancipación truncadas' />
+	<meta property="og:description" content='La Information Superhighway fue una visión del futuro de Internet en la década de 1990, donde se esperaba que la conectividad y el acceso a la información transformaran la sociedad. ¿Cómo fue que el internet truncó estas promesas?' />
 </svelte:head>
 
 <div class="min-h-screen font-primary">
@@ -106,7 +105,7 @@
 			<div class="flex flex-col lg:flex-row gap-12 px-6 py-12 bg-gradient-to-b from-primary-950 to-primary-900">
 				<div class="flex-1">
 					<div class="prose prose-lg prose-slate dark:prose-invert max-w-none
-						prose-headings:font-bold prose-headings:text-gray-700 prose-p:text-gray-300  prose-p:leading-relaxed
+						prose-headings:font-bold prose-headings:text-gray-500 prose-p:text-gray-300  prose-p:leading-relaxed
 						prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline
 						prose-strong:text-slate-100 prose-code:text-pink-400 prose-code:bg-slate-800 prose-pre:bg-slate-950 prose-blockquote:border-l-blue-500 prose-blockquote:bg-blue-950/50 prose-img:rounded-lg prose-img:shadow-lg">
 						
@@ -115,14 +114,14 @@
 						<p>En el siguiente artículo, exploraremos qué fue de esa visión original y cómo nos trajo al presente que habitamos hoy.</p>
 
 						<p>Recuerda suscribirte al newsletter si quieres que te avisemos cuando esté listo :)</p>
+						
+						<!-- <blockquote>
+							<p>The Information Superhighway will change the way we work, learn, shop, and communicate. </p>- Al Gore, 1993
+						</blockquote> -->
 
 						<img src="/sham.png" alt="Horrifying sham" />
 
 
-						
-						<!-- <blockquote>
-							<p>"The Information Superhighway will change the way we work, learn, shop, and communicate." - Al Gore, 1993</p>
-						</blockquote> -->
 
 					</div>
 				</div>
@@ -188,13 +187,13 @@
 				</aside> -->
 			</div>
 		</article>
-		<section class="bg-red-950 text-white px-6 py-20 flex flex-col items-center text-center">
+		<section class="bg-gradient-to-b from-primary-900 to-primary-800 text-white px-6 py-20 flex flex-col items-center text-center">
 			<div class="max-w-xl w-full">
-				<h2 class="text-4xl md:text-5xl font-extrabold mb-4 leading-tight">¿Te avisamos cuando esté listo el siguiente arítculo?</h2>
-				<p class="text-lg text-red-200 mb-10">Recibe novedades del blog en tu bandeja de entrada</p>
+				<h2 class="text-4xl md:text-5xl font-extrabold mb-4 leading-tight">Te avisamos cuando publiquemos el siguiente artículo</h2>
+				<p class="text-lg text-primary-200 mb-10">Nomás déjanos tu dirección de correo electrónico</p>
 				<div class="flex flex-col sm:flex-row items-center gap-4">
 					<input type="email" bind:value={email} placeholder="Tu correo electrónico" class="w-full px-4 py-3 rounded-lg bg-red-50 text-primary-950 placeholder-red-400 focus:outline-none focus:ring-2 focus:ring-red-500" />
-					<button onclick={() => subscribe('information-superhighway')} class="px-6 py-3 rounded-lg bg-red-600 hover:bg-red-700 text-white font-bold transition w-full sm:w-auto whitespace-nowrap">
+					<button onclick={() => subscribe('information-superhighway')} class="px-6 py-3 rounded-lg bg-primary-600 hover:bg-red-700 text-white font-bold transition w-full sm:w-auto whitespace-nowrap">
 						{#if feedback}
 							{feedback}
 						{:else if loading}

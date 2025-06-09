@@ -40,7 +40,8 @@
 </script>
 
 <!-- Sección principal de Scythe -->
-<section class="min-h-screen bg-primary-950 text-primary-100 flex flex-col items-center justify-center px-6 py-16">
+ <div class="bg-gradient-to-b from-primary-950 to-primary-700">
+  <section class="min-h-screen  text-primary-100 flex flex-col items-center justify-center px-6 py-16">
   <div class="max-w-4xl text-left mb-auto">
     <h1 class="text-4xl md:text-6xl font-extrabold mb-8">¿Qué es <span class="text-primary-500">Scythe</span>?</h1>
     <p class="text-lg md:text-xl text-primary-200 my-8 mb-8">Es una forma de desarrollar software que no depende del capital.</p>
@@ -52,7 +53,7 @@
 </section>
 
 <!-- Sección separada de suscripción -->
-<section class="bg-red-950 text-white px-6 py-20 flex flex-col items-center text-center">
+<section class="bg-seconday-950 text-white px-6 py-20 flex flex-col items-center text-center">
   <div class="max-w-xl w-full">
     <h2 class="text-4xl md:text-5xl font-extrabold mb-4 leading-tight">
       ¿Quieres saber en qué termina todo esto?
@@ -68,10 +69,7 @@
         placeholder="Tu correo electrónico"
         class="w-full px-4 py-3 rounded-lg bg-red-50 text-primary-950 placeholder-red-400 focus:outline-none focus:ring-2 focus:ring-red-500"
       />
-      <button
-        onclick={() => subscribe('homepage')}
-        class="px-6 py-3 rounded-lg bg-red-600 hover:bg-red-700 text-white font-bold transition w-full sm:w-auto whitespace-nowrap"
-      >
+      <button onclick={() => subscribe('homepage')} class="px-6 py-3 rounded-lg bg-primary-600 hover:bg-red-700 text-white font-bold transition w-full sm:w-auto whitespace-nowrap">
       {#if feedback}
       {feedback}
       {:else if loading}
@@ -83,3 +81,4 @@
     </div>
   </div>
 </section>
+</div>

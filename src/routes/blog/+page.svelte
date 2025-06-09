@@ -103,16 +103,14 @@
   </div>
 </section>
 
-<section class="font-primary bg-primary-950/30 text-primary-100 px-6 py-20 flex flex-col items-center text-center">
+<section class="font-primary bg-secondary-950 text-primary-100 px-6 py-20 flex flex-col items-center text-center">
   <div class="max-w-xl w-full">
-    <h2 class="text-2xl md:text-5xl font-extrabold mb-4 leading-tight">
-      Te avisamos cuando esté listo 
-    </h2>
-    <p class="text-md text-primary-200 mb-10 text-center">Nada más pásanos tu correo</p>
+    <h2 class="text-2xl md:text-5xl font-extrabold mb-4 leading-tight">¿Quieres saber en qué termina todo esto?</h2>
+    <p class="text-md text-primary-200 mb-10 text-center">Recibe novedades del proyecto directamente en tu bandeja de entrada</p>
 
     <div class="flex text-sm flex-col sm:flex-row items-center gap-4">
       <input type="email" bind:value={email} placeholder="Tu correo electrónico" class="w-full px-4 py-3 rounded-lg bg-blue-50 text-primary-950 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"/>
-      <button class="px-6 py-3 rounded-lg border border-primary-300 bg-primary-600 hover:bg-primary-600 text-primary-50 transition w-full sm:w-auto">
+      <button onclick={() => subscribe('blog')} class="px-6 py-3 rounded-lg bg-primary-600 hover:bg-red-700 text-white font-bold transition w-full sm:w-auto whitespace-nowrap">
         {#if feedback}
         {feedback}
         {:else if loading}
