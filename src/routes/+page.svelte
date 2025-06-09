@@ -58,7 +58,7 @@
     <h2 class="text-4xl md:text-5xl font-extrabold mb-4 leading-tight">
       ¿Quieres saber en qué termina todo esto?
     </h2>
-    <p class="text-lg text-red-200 mb-10">
+    <p class="text-lg text-primary-200 mb-10">
       Recibe novedades semanales del proyecto directamente en tu bandeja de entrada
     </p>
 

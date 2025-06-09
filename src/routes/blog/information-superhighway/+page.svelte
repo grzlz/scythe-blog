@@ -49,6 +49,7 @@
 	<title>¿Qué fue de la Information Superhighway?</title>
 	<meta property="og:title" content='¿Qué fue de la Information Superhighway?' />
 	<meta property="og:description" content='La Information Superhighway fue una visión del futuro de Internet en la década de 1990, donde se esperaba que la conectividad y el acceso a la información transformaran la sociedad. ¿Cómo fue que el internet truncó estas promesas?' />
+	<meta property="og:image" content="https://scythe.icarus.mx/logo_zoomed.jpg" />
 </svelte:head>
 
 <div class="min-h-screen font-primary">
