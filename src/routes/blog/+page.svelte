@@ -41,7 +41,7 @@
 
 </script>
 
-<section>
+<section class="pt-12">
   <div class="bg-primary-950 p-8 shadow-md min-w-full  font-secondary mb-0">
     <h1 class="text-3xl font-semibold text-primary-400 font-terciary">Bienvenida</h1>
     <p class="flex text-sm items-center gap-0.5 text-gray-500 mb-4">
@@ -57,7 +57,7 @@
       <p class="mb-4">Sólo un dato: <span class="bg-gradient-to-r from-primary-300 via-primary-500 to-primary-800 bg-clip-text text-transparent">el 10% más rico controla el 76% de la riqueza total del mundo mientras que <span class="font-semibold">el 50% más pobre controla el 2%</span>.</span><sup><a href="#ref1" id="cite1" class="text-primary-700 hover:text-primary-300">1</a></sup></p>  
 
 
-      <p class="mb-2">Este 76% es nuestro nuevo punto de partida porque la inteligencia artificial y la automatización pretenden transformar cada industria, cada trabajo y cada aspecto de nuestras vidas. Parece razonable pensar que de conservar las reglas actuales del juego, esta revolución tecnológica sólo profundizará la desigualdad existente.</p>
+      <p class="mb-2">Este 76% es nuestro nuevo punto de partida porque las apicaciones de la inteligencia artificial y la automatización pretenden transformar cada industria, cada trabajo y cada aspecto de nuestras vidas. Parece razonable pensar que de conservar las reglas actuales del juego, esta revolución tecnológica sólo profundizará la desigualdad existente.</p>
       <p class="mb-4">Entonces, si la automatización continúa expandiéndose significativamente, ¿qué ocurrirá cuando el trabajo humano deje de ser necesario? ¿Quién se beneficiará de esa productividad masiva? ¿Sólo quienes poseen el capital?</p> 
       <p class="mb-4">Con el arreglo institucional actual, la respuesta es sí.</p>
       <p class="mb-2">¿Qué podemos hacer al respecto?</p>
