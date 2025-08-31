@@ -97,7 +97,7 @@
         <div class="max-w-6xl mx-auto text-center cursor-pointer relative h-full" onmouseenter={() => hovered = true} onmouseleave={() => hovered = false} role="button" tabindex="0">
             {#if hovered}
             <a href="http://icarus.mx" in:fade={{ duration: 200 }} out:fade={{ duration: 0 }} class="absolute inset-0 flex items-center justify-center">
-                <img src="/logo.png" alt="icarus.mx logo" class="w-13 h-13" />
+                <img src="/logo_icarus.png" alt="icarus.mx logo" class="w-13 h-13" />
             </a>
             {:else}
             <span in:fade={{ duration: 200 }} out:fade={{ duration: 0 }} class="absolute inset-0 flex items-center justify-center">© {year} icarus.mx</span>

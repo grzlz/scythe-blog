@@ -42,7 +42,7 @@
 <!-- Sección principal de Scythe -->
  <div class="bg-gradient-to-b from-primary-950 via-primary-900 
   to-primary-800">
-  <section class="min-h-screen pt-12 text-primary-100 flex flex-col items-center justify-center px-6 py-16">
+  <section class="min-h-screen pt-20 text-primary-100 flex flex-col items-center justify-center px-6 py-16">
   <div class="max-w-4xl text-left mb-auto">
     <h1 class="text-4xl md:text-6xl font-extrabold mb-8">¿Qué es <span class="text-primary-500">Scythe</span>?</h1>
     <p class="text-lg md:text-xl text-primary-200 my-8 mb-8">Es una forma de desarrollar software que no depende del capital.</p>
